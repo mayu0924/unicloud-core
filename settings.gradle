@@ -1,0 +1,3 @@
+include ':unicloud-core-mvvm'
+include ':unicloud-core-net'
+include ':app'
