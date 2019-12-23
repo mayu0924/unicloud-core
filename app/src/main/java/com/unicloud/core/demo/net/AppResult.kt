@@ -1,6 +1,6 @@
 package com.unicloud.core.demo.net
 
-import com.unicloud.core.mvvm.BaseResult
+import com.unicloud.core.mvvm.net.BaseResult
 
 data class AppResult<T>(var errorCode: Int, var errorMsg: String, var data: T) :
     BaseResult<T> {

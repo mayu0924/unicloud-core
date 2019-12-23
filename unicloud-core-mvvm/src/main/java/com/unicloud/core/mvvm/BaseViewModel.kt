@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.Utils
 import com.unicloud.core.mvvm.event.Message
 import com.unicloud.core.mvvm.event.SingleLiveEvent
+import com.unicloud.core.mvvm.net.BaseResult
 import com.unicloud.core.mvvm.net.exception.ExceptionHandle
 import com.unicloud.core.mvvm.net.exception.ResponseThrowable
 import kotlinx.coroutines.*

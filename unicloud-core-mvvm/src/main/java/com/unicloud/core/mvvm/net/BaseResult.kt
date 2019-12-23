@@ -1,4 +1,4 @@
-package com.unicloud.core.mvvm
+package com.unicloud.core.mvvm.net
 
 //abstract class BaseResult<T>(var code: Int, var message: String, var result: T) {
 //    abstract fun isSuccess(): Boolean
