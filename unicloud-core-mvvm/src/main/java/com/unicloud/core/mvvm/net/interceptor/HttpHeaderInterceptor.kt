@@ -1,4 +1,4 @@
-package com.unicloud.core.net.interceptor
+package com.unicloud.core.mvvm.net.interceptor
 
 import okhttp3.Interceptor
 import okhttp3.Response

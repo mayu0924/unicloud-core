@@ -1,4 +1,4 @@
-package com.unicloud.core.net.interceptor;
+package com.unicloud.core.mvvm.net.interceptor;
 
 import android.os.Handler;
 import android.os.Looper;

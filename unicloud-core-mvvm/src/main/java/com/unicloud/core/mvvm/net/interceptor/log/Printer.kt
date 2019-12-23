@@ -1,7 +1,7 @@
-package com.unicloud.core.net.interceptor.log
+package com.unicloud.core.mvvm.net.interceptor.log
 
-import com.unicloud.core.net.interceptor.HttpLoggingInterceptor
-import com.unicloud.core.net.util.JsonUtils
+import com.unicloud.core.mvvm.net.interceptor.HttpLoggingInterceptor
+import com.unicloud.core.mvvm.net.util.JsonUtils
 import okhttp3.FormBody
 import okhttp3.Request
 import okio.Buffer

@@ -5,7 +5,7 @@ import android.os.Build
 import com.unicloud.core.demo.BuildConfig
 import com.unicloud.core.demo.R
 import com.unicloud.core.demo.model.api.ApiService
-import com.unicloud.core.net.BaseRetrofitClient
+import com.unicloud.core.mvvm.net.BaseRetrofitClient
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
@@ -34,7 +34,7 @@ object RetrofitClient : BaseRetrofitClient() {
     override fun isDebug(): Boolean = BuildConfig.DEBUG
 
     override fun handleBuilder(builder: OkHttpClient.Builder) {
-
+        builder.authenticator(TokenAuthenticator())
     }
 
     override fun handleRequest(request: Request): Request {

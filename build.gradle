@@ -3,8 +3,14 @@
 buildscript {
     ext.kotlin_version = '1.3.61'
     repositories {
-        google()
-        jcenter()
+        maven {
+            url 'https://maven.aliyun.com/repository/jcenter'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/google'
+        }
+//        jcenter()
+//        google()
     }
     dependencies {
 //        classpath 'com.android.tools.build:gradle:4.0.0-alpha06'
@@ -20,13 +26,29 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
+
         maven { url "https://jitpack.io" }
         maven { url 'https://dl.bintray.com/novoda-oss/snapshots/' }
-        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+//        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+//        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//        maven{ url 'https://maven.aliyun.com/repository/google' }
         maven{ url 'https://dl.bintray.com/msy649166/unicloud'}
-        mavenCentral()//如果 jcenter 很慢，尝试添加 mavenCentral 并调整到jcenter上部
-        jcenter()
+//        mavenCentral()//如果 jcenter 很慢，尝试添加 mavenCentral 并调整到jcenter上部
+//        jcenter()
+//        google()
+
+        maven {
+            url 'https://maven.aliyun.com/repository/jcenter'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/central'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/google'
+        }
+//        mavenCentral()
+//        jcenter()
+//        google()
     }
 
     tasks.withType(Javadoc) {

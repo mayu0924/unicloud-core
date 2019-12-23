@@ -1,7 +1,7 @@
-package com.unicloud.core.net.interceptor
+package com.unicloud.core.mvvm.net.interceptor
 
 import android.content.Context
-import com.unicloud.core.net.util.NetworkUtil
+import com.unicloud.core.mvvm.net.util.NetworkUtil
 import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.Response

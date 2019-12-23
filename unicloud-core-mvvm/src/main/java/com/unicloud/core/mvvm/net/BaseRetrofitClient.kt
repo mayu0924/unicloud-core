@@ -1,4 +1,4 @@
-package com.unicloud.core.net
+package com.unicloud.core.mvvm.net
 
 import android.annotation.SuppressLint
 import android.content.Context

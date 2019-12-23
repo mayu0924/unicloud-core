@@ -1,4 +1,4 @@
-package com.unicloud.core.net.util
+package com.unicloud.core.mvvm.net.util
 
 import android.content.Context
 import android.net.ConnectivityManager

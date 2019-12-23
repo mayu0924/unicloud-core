@@ -39,7 +39,5 @@ dependencies {
 
 
     implementation project(path: ':unicloud-core-mvvm')
-    implementation project(path: ':unicloud-core-net')
 //    implementation 'com.mayu.core:mvvm:0.0.1'
-//    implementation 'com.mayu.core:net:0.0.1'
 }

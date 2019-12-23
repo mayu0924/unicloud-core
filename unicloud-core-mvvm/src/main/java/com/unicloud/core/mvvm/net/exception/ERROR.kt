@@ -1,4 +1,4 @@
-package com.unicloud.core.net.exception
+package com.unicloud.core.mvvm.net.exception
 
 enum class ERROR(private val code: Int, private val err: String) {
 
@@ -27,7 +27,12 @@ enum class ERROR(private val code: Int, private val err: String) {
     /**
      * 连接超时
      */
-    TIMEOUT_ERROR(1006, "连接超时");
+    TIMEOUT_ERROR(1006, "连接超时"),
+
+    /**
+     * TOKEN错误
+     */
+    TOKEN_ERROR(1007, "TOKEN错误");
 
     fun getValue(): String {
         return err

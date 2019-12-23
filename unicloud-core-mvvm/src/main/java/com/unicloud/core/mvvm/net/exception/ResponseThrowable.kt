@@ -1,4 +1,4 @@
-package com.unicloud.core.net.exception
+package com.unicloud.core.mvvm.net.exception
 
 class ResponseThrowable : Exception {
     var code: Int
