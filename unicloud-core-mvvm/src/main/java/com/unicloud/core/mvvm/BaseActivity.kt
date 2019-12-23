@@ -17,8 +17,6 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     protected lateinit var viewModel: VM
 
-    private val dialog: Dialog by lazy { Dialog(this) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutId())
@@ -59,25 +57,12 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
     /**
      * 打开等待框
      */
-    private fun showLoading() {
-//        if (dialog == null) {
-//            dialog = MaterialDialog(this)
-//                .cancelable(false)
-//                .cornerRadius(8f)
-//                .customView(R.layout.custom_progress_dialog_view, noVerticalPadding = true)
-//                .lifecycleOwner(this)
-//                .maxWidth(R.dimen.dialog_width)
-//        }
-//        dialog?.show()
-
-    }
+    open fun showLoading(){}
 
     /**
      * 关闭等待框
      */
-    private fun dismissLoading() {
-//        dialog?.run { if (isShowing) dismiss() }
-    }
+    open fun dismissLoading() {}
 
 
     /**

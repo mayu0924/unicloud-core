@@ -5,11 +5,10 @@ import android.content.Context
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
-import com.unicloud.core.net.interceptor.HttpCacheInterceptor
-import com.unicloud.core.net.interceptor.HttpHeaderInterceptor
-import com.unicloud.core.net.interceptor.HttpLoggingInterceptor
-import com.unicloud.core.net.interceptor.HttpProgressInterceptor
-import com.unicloud.core.net.interceptor.log.Level
+import com.unicloud.core.mvvm.net.interceptor.HttpCacheInterceptor
+import com.unicloud.core.mvvm.net.interceptor.HttpHeaderInterceptor
+import com.unicloud.core.mvvm.net.interceptor.HttpLoggingInterceptor
+import com.unicloud.core.mvvm.net.interceptor.log.Level
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.internal.platform.Platform
@@ -40,7 +39,7 @@ abstract class BaseRetrofitClient {
             requestTag = "Response"
         }
         val header = HttpHeaderInterceptor(defaultHeader())
-        val progress = HttpProgressInterceptor()
+//        val progress = HttpProgressInterceptor()
         val cache = HttpCacheInterceptor(CONTEXT!!, 0, 0)
         // =============================================================
         builder.addInterceptor(header)
@@ -68,7 +67,7 @@ abstract class BaseRetrofitClient {
         builder.build()
     }
 
-    abstract fun isDebug():Boolean
+    abstract fun isDebug(): Boolean
 
     /**
      * 自定义请求设置

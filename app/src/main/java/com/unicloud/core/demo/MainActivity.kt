@@ -30,5 +30,11 @@ class MainActivity : BaseActivity<MainViewModel>() {
         Log.d("event", msg.toString())
     }
 
+    override fun showLoading() {
+        super.showLoading()
+    }
 
+    override fun dismissLoading() {
+        super.dismissLoading()
+    }
 }
