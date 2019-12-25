@@ -11,5 +11,5 @@ interface BaseResult<T> {
 
     fun message(): String
 
-    fun data():T
+    fun data():T?
 }

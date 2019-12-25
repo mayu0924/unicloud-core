@@ -23,8 +23,6 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     //是否第一次加载
     private var isFirst: Boolean = true
 
-//    private var dialog: MaterialDialog? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -91,26 +89,12 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     /**
      * 打开等待框
      */
-    private fun showLoading() {
-//        if (dialog == null) {
-//            dialog = context?.let {
-//                MaterialDialog(it)
-//                    .cancelable(false)
-//                    .cornerRadius(8f)
-//                    .customView(R.layout.custom_progress_dialog_view, noVerticalPadding = true)
-//                    .lifecycleOwner(this)
-//                    .maxWidth(R.dimen.dialog_width)
-//            }
-//        }
-//        dialog?.show()
-    }
+    open fun showLoading() {}
 
     /**
      * 关闭等待框
      */
-    private fun dismissLoading() {
-//        dialog?.run { if (isShowing) dismiss() }
-    }
+    open fun dismissLoading() {}
 
 
     /**

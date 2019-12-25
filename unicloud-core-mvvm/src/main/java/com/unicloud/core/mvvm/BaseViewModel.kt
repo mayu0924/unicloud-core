@@ -71,7 +71,7 @@ open class BaseViewModel : AndroidViewModel(Utils.getApp()), LifecycleObserver {
      */
     fun <T> launchOnlyresult(
         block: suspend CoroutineScope.() -> BaseResult<T>,
-        success: (T) -> Unit,
+        success: (T?) -> Unit,
         error: (ResponseThrowable) -> Unit = {
             defUI.toastEvent.postValue("${it.code}:${it.errMsg}")
         },
@@ -101,7 +101,7 @@ open class BaseViewModel : AndroidViewModel(Utils.getApp()), LifecycleObserver {
      */
     private suspend fun <T> executeResponse(
         response: BaseResult<T>,
-        success: suspend CoroutineScope.(T) -> Unit
+        success: suspend CoroutineScope.(T?) -> Unit
     ) {
         coroutineScope {
             if (response.isSuccess()) success(response.data())
