@@ -25,8 +25,8 @@ import javax.net.ssl.X509TrustManager
 abstract class BaseRetrofitClient {
     companion object {
         var CONTEXT: Context? = null
-        private const val TIME_OUT = 5.toLong()
-        private const val READ_TIME_OUT = 15.toLong()
+        private const val TIME_OUT = 30.toLong()
+        private const val READ_TIME_OUT = 30.toLong()
     }
 
     private val client: OkHttpClient by lazy {

@@ -13,7 +13,7 @@ enum class ERROR(private val code: Int, private val err: String) {
     /**
      * 网络错误
      */
-    NETWORD_ERROR(1002, "网络错误"),
+    NETWORD_ERROR(1002, "连接失败"),
     /**
      * 协议出错
      */
