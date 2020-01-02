@@ -12,4 +12,4 @@ data class ArticleListBean(val offset: Int,
                            val pageCount: Int,
                            val curPage: Int,
                            val over: Boolean,
-                           val data: List<ArticleBean>):Serializable
+                           val datas: List<ArticleBean>):Serializable

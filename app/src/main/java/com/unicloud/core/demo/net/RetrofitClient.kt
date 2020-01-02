@@ -14,7 +14,7 @@ import okhttp3.Request
  */
 object RetrofitClient : BaseRetrofitClient() {
 
-    val service: ApiService by lazy { getService(ApiService::class.java, ApiService.BASE_URL) }
+    val service: ApiService by lazy { getService(ApiService::class.java) }
 
     private val header: MutableMap<String, String> by lazy {
         mutableMapOf(
@@ -30,6 +30,8 @@ object RetrofitClient : BaseRetrofitClient() {
     fun init(context: Context) {
         CONTEXT = context
     }
+
+    override fun baseUrl() = "https://www.wanandroid.com"
 
     override fun isDebug(): Boolean = BuildConfig.DEBUG
 
@@ -59,13 +61,5 @@ object RetrofitClient : BaseRetrofitClient() {
 
     override fun isUseSSL(): Boolean {
         return true
-    }
-
-    fun refreshToken(token: String?) {
-        if (token.isNullOrEmpty()) {
-            header.remove("X-token")
-        } else {
-            header["X-token"] = token
-        }
     }
 }

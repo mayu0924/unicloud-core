@@ -15,8 +15,8 @@ class MainViewModel : BaseViewModel() {
             mainRespository.getHomeArticles(0)
         }, {
             mArticleListBean.value = it!!
-            defUI.toastEvent.postValue(it.data[0].title)
-            defUI.msgEvent.postValue(Message(0, "请求成功", it.data[0].title))
+            defUI.toastEvent.postValue(it.datas[0].title)
+            defUI.msgEvent.postValue(Message(0, "请求成功", it.datas[0].title))
         })
     }
 }

@@ -3,6 +3,7 @@ package com.unicloud.core.mvvm.net.interceptor
 import com.blankj.utilcode.util.JsonUtils
 import com.unicloud.core.mvvm.net.interceptor.log.Level
 import com.unicloud.core.mvvm.net.interceptor.log.Printer
+import me.jessyan.retrofiturlmanager.parser.DomainUrlParser
 import okhttp3.*
 import okhttp3.internal.platform.Platform
 import okhttp3.internal.platform.Platform.INFO

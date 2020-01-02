@@ -2,6 +2,9 @@ package com.unicloud.core.mvvm.net
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.text.TextUtils
+import com.blankj.utilcode.util.CacheMemoryUtils
+import com.blankj.utilcode.util.LogUtils
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
@@ -9,6 +12,9 @@ import com.unicloud.core.mvvm.net.interceptor.HttpCacheInterceptor
 import com.unicloud.core.mvvm.net.interceptor.HttpHeaderInterceptor
 import com.unicloud.core.mvvm.net.interceptor.HttpLoggingInterceptor
 import com.unicloud.core.mvvm.net.interceptor.log.Level
+import me.jessyan.retrofiturlmanager.RetrofitUrlManager
+import me.jessyan.retrofiturlmanager.onUrlChangeListener
+import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.internal.platform.Platform
@@ -25,12 +31,28 @@ import javax.net.ssl.X509TrustManager
 abstract class BaseRetrofitClient {
     companion object {
         var CONTEXT: Context? = null
-        private const val TIME_OUT = 30.toLong()
-        private const val READ_TIME_OUT = 30.toLong()
+        var TIME_OUT = 30.toLong()
+        var READ_TIME_OUT = 30.toLong()
     }
 
+    private var mRetrofitBuilder: Retrofit.Builder = Retrofit.Builder()
+
+    init {
+        RetrofitUrlManager.getInstance().registerUrlChangeListener(object : onUrlChangeListener {
+            override fun onUrlChangeBefore(oldUrl: HttpUrl?, domainName: String?) {
+
+            }
+
+            override fun onUrlChanged(newUrl: HttpUrl?, oldUrl: HttpUrl?) {
+                LogUtils.dTag("onUrlChanged", "oldUrl:$oldUrl, newUrl:$newUrl")
+            }
+        })
+    }
+
+    private val serviceCache by lazy { CacheMemoryUtils.getInstance(8) }
+
     private val client: OkHttpClient by lazy {
-        val builder = OkHttpClient.Builder()
+        val builder = RetrofitUrlManager.getInstance().with(OkHttpClient.Builder())
         val logging = HttpLoggingInterceptor().apply {
             isDebug = isDebug()
             level = Level.BASIC
@@ -63,9 +85,33 @@ abstract class BaseRetrofitClient {
             builder.sslSocketFactory(getSSLSocketFactory())
                 .hostnameVerifier(org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)
         }
+
         handleBuilder(builder)
+
         builder.build()
     }
+
+
+    private var mRetrofit: Retrofit
+        get() {
+            mRetrofitBuilder.client(client).addConverterFactory(GsonConverterFactory.create())
+            val baseUrl = baseUrl()
+            if (baseUrl != null && !TextUtils.isEmpty(baseUrl)) {
+                mRetrofitBuilder.baseUrl(baseUrl)
+                RetrofitUrlManager.getInstance().setGlobalDomain(baseUrl)
+            }
+            return mRetrofitBuilder.build()
+        }
+        set(value) {
+            mRetrofit = value
+        }
+
+
+    fun clear(){
+        serviceCache.clear()
+    }
+
+    abstract fun baseUrl(): String?
 
     abstract fun isDebug(): Boolean
 
@@ -94,12 +140,18 @@ abstract class BaseRetrofitClient {
      */
     abstract fun isUseSSL(): Boolean
 
-    fun <S> getService(serviceClass: Class<S>, baseUrl: String): S {
-        return Retrofit.Builder()
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(baseUrl)
-            .build().create(serviceClass)
+    fun <S> getService(serviceClass: Class<S>): S {
+        val cacheKey = serviceClass.canonicalName!!
+        var service: S = serviceCache.get<S>(cacheKey)
+        if (service == null) {
+            service = mRetrofit.create(serviceClass)
+            serviceCache.put(cacheKey, service)
+        }
+        return service
+    }
+
+    fun addDomain(name: String, domain: String) {
+        RetrofitUrlManager.getInstance().putDomain(name, domain)
     }
 
     private fun getSSLSocketFactory(): SSLSocketFactory {

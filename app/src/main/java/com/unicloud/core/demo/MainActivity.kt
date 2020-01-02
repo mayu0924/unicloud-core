@@ -13,7 +13,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
     override fun startObserve() {
         viewModel.mArticleListBean.observe(this, Observer {
-            chapterTitle.text = it.data[0].title
+            chapterTitle.text = it.datas[0].title
         })
     }
 
