@@ -6,22 +6,38 @@ import com.blankj.utilcode.util.JsonUtils
 import com.google.gson.JsonParseException
 import org.apache.http.conn.ConnectTimeoutException
 import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.HttpException
 import java.net.ConnectException
 
 object ExceptionHandle {
     fun handleException(e: Throwable): ResponseThrowable {
         val ex: ResponseThrowable
-        if(e is ResponseThrowable){
+        if (e is ResponseThrowable) {
             ex = e
-        }else if (e is HttpException) {
+        } else if (e is HttpException) {
             if (e.code() == 401) {
                 ex = ResponseThrowable(ERROR.TOKEN_ERROR)
             } else {
                 val resp = e.response()
                 val json = resp?.errorBody()?.string()
                 if (!TextUtils.isEmpty(json)) {
-                    val code = JsonUtils.getInt(json, "status")
+                    val code = try {
+                        val jsonObject = JSONObject(json!!)
+                        when {
+                            jsonObject.has("code") -> {
+                                JsonUtils.getInt(json, "code")
+                            }
+                            jsonObject.has("status") -> {
+                                JsonUtils.getInt(json, "status")
+                            }
+                            else -> {
+                                -1
+                            }
+                        }
+                    } catch (e: Exception) {
+                        -1
+                    }
                     val message = JsonUtils.getString(json, "message")
                     ex = ResponseThrowable(code, message)
                 } else {
@@ -29,8 +45,8 @@ object ExceptionHandle {
                 }
             }
         } else if (e is JsonParseException
-            || e is JSONException
-            || e is ParseException || e is com.google.gson.stream.MalformedJsonException
+                || e is JSONException
+                || e is ParseException || e is com.google.gson.stream.MalformedJsonException
         ) {
             ex = ResponseThrowable(ERROR.PARSE_ERROR)
         } else if (e is ConnectException) {
