@@ -18,7 +18,7 @@ import java.lang.reflect.ParameterizedType
  */
 abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
-    protected lateinit var viewModel: VM
+    lateinit var viewModel: VM
 
     //是否第一次加载
     private var isFirst: Boolean = true

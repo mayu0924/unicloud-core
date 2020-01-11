@@ -1,6 +1,5 @@
 package com.unicloud.core.mvvm
 
-import android.app.Dialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -15,7 +14,7 @@ import java.lang.reflect.ParameterizedType
  */
 abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
 
-    protected lateinit var viewModel: VM
+    lateinit var viewModel: VM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +56,7 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
     /**
      * 打开等待框
      */
-    open fun showLoading(){}
+    open fun showLoading() {}
 
     /**
      * 关闭等待框

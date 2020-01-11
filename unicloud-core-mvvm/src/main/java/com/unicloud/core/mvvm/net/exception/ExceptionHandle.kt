@@ -21,24 +21,20 @@ object ExceptionHandle {
             } else {
                 val resp = e.response()
                 val json = resp?.errorBody()?.string()
+                var message = ""
                 if (!TextUtils.isEmpty(json)) {
                     val code = try {
                         val jsonObject = JSONObject(json!!)
+                        message = JsonUtils.getString(json, "message")
                         when {
-                            jsonObject.has("code") -> {
-                                JsonUtils.getInt(json, "code")
-                            }
-                            jsonObject.has("status") -> {
-                                JsonUtils.getInt(json, "status")
-                            }
-                            else -> {
-                                -1
-                            }
+                            jsonObject.has("code") -> JsonUtils.getInt(json, "code")
+                            jsonObject.has("status") -> JsonUtils.getInt(json, "status")
+                            else -> -1
                         }
-                    } catch (e: Exception) {
-                        -1
+                    } catch (e2: Exception) {
+                        message = e.message()
+                        e.code()
                     }
-                    val message = JsonUtils.getString(json, "message")
                     ex = ResponseThrowable(code, message)
                 } else {
                     ex = ResponseThrowable(e.code(), e.message())
