@@ -31,12 +31,11 @@ object RetrofitClient : BaseRetrofitClient() {
         CONTEXT = context
     }
 
-    override fun baseUrl() = "https://www.wanandroid.com"
+    override fun baseUrl() = "https://www.unicloud.com"
 
     override fun isDebug(): Boolean = BuildConfig.DEBUG
 
     override fun handleBuilder(builder: OkHttpClient.Builder) {
-        builder.authenticator(TokenAuthenticator())
     }
 
     override fun handleRequest(request: Request): Request {

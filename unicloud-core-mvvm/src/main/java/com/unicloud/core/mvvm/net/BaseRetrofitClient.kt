@@ -44,7 +44,7 @@ abstract class BaseRetrofitClient {
             }
 
             override fun onUrlChanged(newUrl: HttpUrl?, oldUrl: HttpUrl?) {
-                LogUtils.dTag("onUrlChanged", "oldUrl:$oldUrl, newUrl:$newUrl")
+
             }
         })
     }
