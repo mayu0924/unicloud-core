@@ -12,6 +12,14 @@ import com.unicloud.core.mvvm.net.exception.ResponseThrowable
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.Call
+import java.io.File
+import java.io.InputStream
+import java.io.OutputStream
+
 
 open class BaseViewModel : AndroidViewModel(Utils.getApp()), LifecycleObserver {
     val defUI: UIChange by lazy { UIChange() }
@@ -93,6 +101,108 @@ open class BaseViewModel : AndroidViewModel(Utils.getApp()), LifecycleObserver {
                     complete()
                 }
             )
+        }
+    }
+
+    /**
+     * 添加多媒体类型
+     *
+     * @param paramMap 参数对
+     * @param key      键
+     * @param obj      值
+     */
+    fun addMultiPart(
+        paramMap: MutableMap<String, RequestBody>,
+        key: String,
+        obj: Any
+    ) {
+        if (obj is String) {
+            val body = RequestBody.create(MediaType.parse("text/plain;charset=UTF-8"), obj)
+            paramMap[key] = body
+        } else if (obj is File) {
+            val body = RequestBody.create(MediaType.parse("multipart/form-data;charset=UTF-8"), obj)
+            paramMap[key + "\"; filename=\"" + obj.name + ""] = body
+        }
+    }
+
+    fun uploadFile(
+        call: Call<ResponseBody>,
+        success: (result: String) -> Unit,
+        fail: (errMsg: String) -> Unit
+    ) {
+        launchUI {
+            withContext(Dispatchers.IO) {
+                val response = call.execute()
+                val body = response.body()
+                if (response.isSuccessful && body != null) {
+                    success.invoke(body.string())
+                } else {
+                    fail.invoke("上传失败[${response.code()}]: ${response.errorBody()?.string()}")
+                }
+            }
+        }
+    }
+
+    fun downloadFile(
+        call: Call<ResponseBody>,
+        filePath: String,
+        progress: (curr: Long, total: Long) -> Unit,
+        complete: (file: File) -> Unit,
+        fail: (errMsg: String) -> Unit
+    ) {
+        launchUI {
+            withContext(Dispatchers.IO) {
+                val file = File(filePath)
+                file.createNewFile()
+                //通过GitHubService.getInstance()可以直接拿到GitHubService对象
+                val response = call.execute()
+                val body = response.body()
+                if (response.isSuccessful && body != null) {
+                    var inStream: InputStream? = null
+                    var outStream: OutputStream? = null
+                    /*注意,在kotlin中没有受检异常,
+                    如果这里不写try catch,编译器也是不会报错的,
+                    但是我们需要确保流关闭,所以需要在finally进行操作*/
+                    try {
+                        //以下读写文件的操作和java类似
+                        inStream = body.byteStream()
+                        outStream = file.outputStream()
+                        //文件总长度
+                        val contentLength = body.contentLength()
+                        //当前已下载长度
+                        var currentLength = 0L
+                        //缓冲区
+                        val buff = ByteArray(1024)
+                        var len = inStream.read(buff)
+                        var percent = 0
+                        while (len != -1) {
+                            outStream.write(buff, 0, len)
+                            currentLength += len
+                            /*不要频繁的调用切换线程,否则某些手机可能因为频繁切换线程导致卡顿,
+                            这里加一个限制条件,只有下载百分比更新了才切换线程去更新UI*/
+                            if ((currentLength * 100 / contentLength).toInt() > percent) {
+                                percent = (currentLength / contentLength * 100).toInt()
+                                //切换到主线程更新UI
+                                withContext(Dispatchers.Main) {
+                                    progress.invoke(currentLength, contentLength)
+                                }
+                                //更新完成UI之后立刻切回IO线程
+                            }
+                            len = inStream.read(buff)
+                        }
+                        //下载完成之后,切换到主线程更新UI
+                        withContext(Dispatchers.Main) {
+                            complete.invoke(file)
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        fail.invoke("下载失败")
+                    } finally {
+                        inStream?.close()
+                        outStream?.close()
+                    }
+                }
+            }
         }
     }
 

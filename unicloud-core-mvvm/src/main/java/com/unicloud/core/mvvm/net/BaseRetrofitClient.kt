@@ -51,7 +51,7 @@ abstract class BaseRetrofitClient {
 
     private val serviceCache by lazy { CacheMemoryUtils.getInstance(8) }
 
-    private val client: OkHttpClient by lazy {
+    val client: OkHttpClient by lazy {
         val builder = RetrofitUrlManager.getInstance().with(OkHttpClient.Builder())
         val logging = HttpLoggingInterceptor().apply {
             isDebug = isDebug()

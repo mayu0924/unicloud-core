@@ -6,6 +6,7 @@ import com.unicloud.core.demo.BuildConfig
 import com.unicloud.core.demo.R
 import com.unicloud.core.demo.model.api.ApiService
 import com.unicloud.core.mvvm.net.BaseRetrofitClient
+import com.unicloud.core.mvvm.net.BaseService
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
@@ -13,6 +14,8 @@ import okhttp3.Request
  * 网络请求
  */
 object RetrofitClient : BaseRetrofitClient() {
+
+    val baseService: BaseService by lazy { getService(BaseService::class.java) }
 
     val service: ApiService by lazy { getService(ApiService::class.java) }
 
@@ -23,7 +26,9 @@ object RetrofitClient : BaseRetrofitClient() {
             "osVersion" to Build.VERSION.RELEASE,
             "deviceModel" to Build.BRAND + "  " + Build.MODEL,
             "appVersion" to BuildConfig.VERSION_NAME,
-            "versionCode" to "${BuildConfig.VERSION_CODE}"
+            "versionCode" to "${BuildConfig.VERSION_CODE}",
+            "workspaceId" to "1",
+            "Authorization" to "bearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.bearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNTgxND.p1T6uZGozIP3yVYspj_plZm10OWURr061u91yXX0fgYEyNDI3LCJhdXRob3JpdGllcyI6WyJ3cml0ZSIsInJlYWQiXSwianRpIjoiMWQ5YzU3M2EtODdhZi00ZTFlLTgwNTAtNGZjNDEyNmJkN2M2IiwiY2xpZW50X2lkIjoiMTU3OTQzMDUxMTkwNyJ9.Ib9c3dluGJLR63tWiJP2E7JBjMwUOLrKfpWr7I9GS6c"
         )
     }
 
@@ -44,7 +49,7 @@ object RetrofitClient : BaseRetrofitClient() {
                 request
                     .url()
                     .newBuilder()
-                    .addEncodedQueryParameter("test", "123")
+//                    .addEncodedQueryParameter("test", "123")
                     .build()
             )
             .build()

@@ -9,5 +9,6 @@ class MApplication : Application() {
         super.onCreate()
 
         RetrofitClient.init(this)
+        RetrofitClient.client
     }
 }

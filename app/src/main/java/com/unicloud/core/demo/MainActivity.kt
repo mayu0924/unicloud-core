@@ -22,7 +22,11 @@ class MainActivity : BaseActivity<MainViewModel>() {
     }
 
     override fun initData() {
-        viewModel.getHomeArticles()
+//        viewModel.getHomeArticles()
+//        viewModel.download()
+        chapterTitle.setOnClickListener {
+            viewModel.upload()
+        }
     }
 
     override fun handleEvent(msg: Message) {
