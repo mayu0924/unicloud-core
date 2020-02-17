@@ -6,14 +6,31 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
+    signingConfigs {
+        debug {
+            storeFile file('keystore.jks')
+            storePassword 'unicloud'
+            keyAlias = 'unicloud'
+            keyPassword 'unicloud'
+        }
+        release {
+            storeFile file('keystore.jks')
+            storePassword 'unicloud'
+            keyAlias = 'unicloud'
+            keyPassword 'unicloud'
+        }
+    }
+
     defaultConfig {
         applicationId "com.unicloud.core.demo"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        signingConfig signingConfigs.release
     }
 
     buildTypes {
@@ -34,10 +51,14 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
 
-    implementation project(path: ':unicloud-core-mvvm')
+    debugImplementation project(path: ':unicloud-core-mvvm')
+    debugImplementation project(path: ':unicloud-core-view')
+
+    releaseImplementation 'com.mayu.core:mvvm:0.3.0'
+    releaseImplementation 'com.mayu.core:ui:0.0.1'
 //    implementation 'com.mayu.core:mvvm:0.0.1'
 }

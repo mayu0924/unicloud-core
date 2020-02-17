@@ -32,7 +32,7 @@ allprojects {
 //        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
 //        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/' }
 //        maven{ url 'https://maven.aliyun.com/repository/google' }
-        maven{ url 'https://dl.bintray.com/msy649166/unicloud'}
+        maven { url 'https://dl.bintray.com/msy649166/unicloud' }
 //        mavenCentral()//如果 jcenter 很慢，尝试添加 mavenCentral 并调整到jcenter上部
 //        jcenter()
 //        google()

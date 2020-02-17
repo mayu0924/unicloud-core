@@ -1,5 +1,6 @@
 package com.unicloud.core.demo
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
@@ -13,7 +14,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
     override fun startObserve() {
         viewModel.mArticleListBean.observe(this, Observer {
-            chapterTitle.text = it.datas[0].title
+            //            chapterTitle.text = it.datas[0].title
         })
     }
 
@@ -24,9 +25,17 @@ class MainActivity : BaseActivity<MainViewModel>() {
     override fun initData() {
 //        viewModel.getHomeArticles()
 //        viewModel.download()
-        chapterTitle.setOnClickListener {
-            viewModel.upload()
+//        chapterTitle.setOnClickListener {
+//            viewModel.upload()
+//        }
+
+        uniBtn.setOnClickListener {
+            startActivity(Intent(this, UNIButtonActivity::class.java))
         }
+        uniText.setOnClickListener {
+            startActivity(Intent(this, UNITextActivity::class.java))
+        }
+
     }
 
     override fun handleEvent(msg: Message) {

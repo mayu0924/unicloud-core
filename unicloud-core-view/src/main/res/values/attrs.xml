@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="UNIButton">
+        <attr name="uni_btn_isHole" format="boolean" />
+        <attr name="uni_btn_corner_radius" format="dimension" />
+        <attr name="uni_btn_corner_radius_tl" format="dimension" />
+        <attr name="uni_btn_corner_radius_tr" format="dimension" />
+        <attr name="uni_btn_corner_radius_bl" format="dimension" />
+        <attr name="uni_btn_corner_radius_br" format="dimension" />
+        <attr name="uni_btn_start_color" format="reference" />
+        <attr name="uni_btn_end_color" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="UNIText">
+        <attr name="uni_text_isHole" format="boolean" />
+        <attr name="uni_text_corner_radius" format="dimension" />
+        <attr name="uni_text_corner_radius_tl" format="dimension" />
+        <attr name="uni_text_corner_radius_tr" format="dimension" />
+        <attr name="uni_text_corner_radius_bl" format="dimension" />
+        <attr name="uni_text_corner_radius_br" format="dimension" />
+        <attr name="uni_text_start_color" format="reference" />
+        <attr name="uni_text_end_color" format="reference" />
+    </declare-styleable>
+</resources>
