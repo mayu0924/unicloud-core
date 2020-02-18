@@ -1,4 +1,4 @@
-package com.unicloud.core.demo
+package com.unicloud.core.demo.activity.vm
 
 import android.os.Environment
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,6 @@ import com.unicloud.core.demo.model.repository.MainRepository
 import com.unicloud.core.demo.net.RetrofitClient
 import com.unicloud.core.mvvm.BaseViewModel
 import com.unicloud.core.mvvm.event.Message
-import com.unicloud.core.mvvm.net.BaseService
 import com.unicloud.core.mvvm.net.upload.ProgressListener
 import com.unicloud.core.mvvm.net.upload.UploadFileRequestBody
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager

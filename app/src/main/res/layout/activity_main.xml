@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <com.unicloud.core.view.button.UNIButton
         android:id="@+id/uniBtn"
@@ -31,6 +31,18 @@
         app:uni_btn_end_color="@color/colorRed"
         app:uni_btn_isHole="false"
         app:uni_btn_start_color="@color/colorRed_light" />
+
+    <com.unicloud.core.view.button.UNIButton
+        android:id="@+id/uniDrawableText"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:text="UNIDrawableText"
+        android:textColor="#FFFFFF"
+        app:uni_btn_corner_radius="10dp"
+        app:uni_btn_end_color="@color/colorRed"
+        app:uni_btn_isHole="false"
+        app:uni_btn_start_color="@color/colorPrimaryDark" />
 
 </LinearLayout>
 
