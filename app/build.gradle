@@ -56,10 +56,9 @@ dependencies {
 
     api 'me.jessyan:autosize:1.1.2'
 
-    debugImplementation project(path: ':unicloud-core-mvvm')
-    debugImplementation project(path: ':unicloud-core-view')
+//    debugImplementation project(path: ':unicloud-core-mvvm')
+//    debugImplementation project(path: ':unicloud-core-view')
 
-//    releaseImplementation 'com.mayu.core:mvvm:0.3.0'
-//    releaseImplementation 'com.mayu.core:ui:0.0.1'
-//    implementation 'com.mayu.core:mvvm:0.0.1'
+    releaseImplementation 'com.mayu.core:mvvm:0.3.0'
+    releaseImplementation 'com.mayu.core:ui:0.0.2'
 }

@@ -44,5 +44,33 @@
         app:uni_btn_isHole="false"
         app:uni_btn_start_color="@color/colorPrimaryDark" />
 
+    <com.unicloud.core.view.button.UNIButton
+        android:id="@+id/uniImageView"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:text="UNIImageView"
+        android:textColor="#FFFFFF"
+        app:uni_btn_corner_radius="10dp"
+        app:uni_btn_end_color="@color/colorAccent"
+        app:uni_btn_isHole="false"
+        app:uni_btn_start_color="@color/colorPrimaryDark" />
+
+
+    <com.unicloud.core.widget.UButton
+        android:id="@+id/rButton"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="RWidget"
+        android:textColor="#fff"
+        android:textSize="18dp"
+        app:background_normal="@array/array_l_r"
+        app:corner_radius="10dp"
+        app:gradient_orientation="LEFT_RIGHT"
+        app:gradient_type="linear"
+        app:ripple="true" />
+
 </LinearLayout>
 

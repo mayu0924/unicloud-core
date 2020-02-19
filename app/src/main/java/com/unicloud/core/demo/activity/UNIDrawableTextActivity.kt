@@ -21,7 +21,7 @@ class UNIDrawableTextActivity : BaseActivity<NoViewModel>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        title = "UNIText"
+        title = "UNIDrawableText"
     }
 
     override fun initData() {
@@ -33,13 +33,5 @@ class UNIDrawableTextActivity : BaseActivity<NoViewModel>() {
     override fun handleEvent(msg: Message) {
         super.handleEvent(msg)
         Log.d("event", msg.toString())
-    }
-
-    override fun showLoading() {
-        super.showLoading()
-    }
-
-    override fun dismissLoading() {
-        super.dismissLoading()
     }
 }

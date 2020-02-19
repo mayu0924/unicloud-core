@@ -22,7 +22,7 @@ import com.unicloud.core.view.R
  * @author mayu
  * @date 2018/11/29/029
  */
-class UNIDrawableText @JvmOverloads constructor(
+class UNIDrawableText constructor(
     context: Context,
     attrs: AttributeSet? = null
 ) : AppCompatTextView(context, attrs) {

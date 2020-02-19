@@ -111,8 +111,7 @@
             android:id="@+id/udt6"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:drawablePadding="8dp"
-            android:drawableTint="@color/colorRed"
+            android:drawablePadding="4dp"
             android:gravity="center"
             android:text="DrawableText"
             android:textColor="@color/colorPrimaryDark"
@@ -120,11 +119,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/guideLine1"
             app:layout_constraintTop_toBottomOf="@id/udt4"
-            app:uni_drawable_height="30dp"
+            app:uni_drawable_height="4dp"
             app:uni_drawable_location="left"
             app:uni_drawable_mode="IMAGE"
-            app:uni_drawable_src="@drawable/ic_changebtn_change"
-            app:uni_drawable_width="30dp" />
+            app:uni_drawable_src="@drawable/ic_uni_drawable_xing"
+            app:uni_drawable_width="4dp" />
 
         <com.unicloud.core.view.text.UNIDrawableText
             android:id="@+id/udt7"
@@ -191,20 +190,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/guideLine1"
             app:layout_constraintTop_toBottomOf="@id/udt8"
-            app:uni_drawable_height="5dp"
+            app:uni_drawable_height="8dp"
             app:uni_drawable_location="left"
             app:uni_drawable_mode="OVAL"
-            app:uni_drawable_width="5dp" />
+            app:uni_drawable_width="8dp" />
 
 
         <com.unicloud.core.view.text.UNIDrawableText
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:drawablePadding="5dp"
-            android:gravity="center"
-            android:text="长袖"
+            android:gravity="start|center_vertical"
+            android:text="长袖长袖长袖长袖长袖长袖长袖长袖长袖长袖长袖长袖长袖长袖长袖长袖长袖长袖长袖长袖长袖长袖"
             android:textColor="@android:color/black"
-            android:textSize="18dp"
+            android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/udt9"

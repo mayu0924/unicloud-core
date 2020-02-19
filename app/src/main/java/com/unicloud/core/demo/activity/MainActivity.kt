@@ -40,6 +40,12 @@ class MainActivity : BaseActivity<MainViewModel>() {
         uniDrawableText.setOnClickListener {
             startActivity(Intent(this, UNIDrawableTextActivity::class.java))
         }
+        uniImageView.setOnClickListener {
+            startActivity(Intent(this, UNIImageActivity::class.java))
+        }
+        rButton.setOnClickListener {
+            startActivity(Intent(this, RWidgetActivity::class.java))
+        }
     }
 
     override fun handleEvent(msg: Message) {
