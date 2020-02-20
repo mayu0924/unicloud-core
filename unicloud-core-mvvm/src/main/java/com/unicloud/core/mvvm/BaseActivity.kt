@@ -44,7 +44,7 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
             dismissLoading()
         })
         viewModel.defUI.toastEvent.observe(this, Observer {
-            ToastUtils.showShort(it)
+            ToastUtils.showLong(it)
         })
         viewModel.defUI.msgEvent.observe(this, Observer {
             handleEvent(it)
