@@ -5,72 +5,83 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
     tools:context=".activity.MainActivity">
 
-    <com.unicloud.core.view.button.UNIButton
-        android:id="@+id/uniBtn"
+    <com.unicloud.core.widget.UToolbar
+        android:id="@+id/toolBar"
+        style="@style/ToolBar.Home"
+        app:title="自定义View"
+        app:subtitle="@string/app_name" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:text="UNIButton"
-        android:textColor="#FFFFFF"
-        app:uni_btn_corner_radius="10dp"
-        app:uni_btn_end_color="@color/colorPrimary"
-        app:uni_btn_isHole="false"
-        app:uni_btn_start_color="@color/colorAccent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <com.unicloud.core.view.button.UNIButton
-        android:id="@+id/uniText"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:text="UNIText"
-        android:textColor="#FFFFFF"
-        app:uni_btn_corner_radius="10dp"
-        app:uni_btn_end_color="@color/colorRed"
-        app:uni_btn_isHole="false"
-        app:uni_btn_start_color="@color/colorRed_light" />
+        <com.unicloud.core.view.button.UNIButton
+            android:id="@+id/uniBtn"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:text="UNIButton"
+            android:textColor="#FFFFFF"
+            app:uni_btn_corner_radius="10dp"
+            app:uni_btn_end_color="@color/colorPrimary"
+            app:uni_btn_isHole="false"
+            app:uni_btn_start_color="@color/colorAccent" />
 
-    <com.unicloud.core.view.button.UNIButton
-        android:id="@+id/uniDrawableText"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:text="UNIDrawableText"
-        android:textColor="#FFFFFF"
-        app:uni_btn_corner_radius="10dp"
-        app:uni_btn_end_color="@color/colorRed"
-        app:uni_btn_isHole="false"
-        app:uni_btn_start_color="@color/colorPrimaryDark" />
+        <com.unicloud.core.view.button.UNIButton
+            android:id="@+id/uniText"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:text="UNIText"
+            android:textColor="#FFFFFF"
+            app:uni_btn_corner_radius="10dp"
+            app:uni_btn_end_color="@color/colorRed"
+            app:uni_btn_isHole="false"
+            app:uni_btn_start_color="@color/colorRed_light" />
 
-    <com.unicloud.core.view.button.UNIButton
-        android:id="@+id/uniImageView"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:text="UNIImageView"
-        android:textColor="#FFFFFF"
-        app:uni_btn_corner_radius="10dp"
-        app:uni_btn_end_color="@color/colorAccent"
-        app:uni_btn_isHole="false"
-        app:uni_btn_start_color="@color/colorPrimaryDark" />
+        <com.unicloud.core.view.button.UNIButton
+            android:id="@+id/uniDrawableText"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:text="UNIDrawableText"
+            android:textColor="#FFFFFF"
+            app:uni_btn_corner_radius="10dp"
+            app:uni_btn_end_color="@color/colorRed"
+            app:uni_btn_isHole="false"
+            app:uni_btn_start_color="@color/colorPrimaryDark" />
+
+        <com.unicloud.core.view.button.UNIButton
+            android:id="@+id/uniImageView"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:text="UNIImageView"
+            android:textColor="#FFFFFF"
+            app:uni_btn_corner_radius="10dp"
+            app:uni_btn_end_color="@color/colorAccent"
+            app:uni_btn_isHole="false"
+            app:uni_btn_start_color="@color/colorPrimaryDark" />
 
 
-    <com.unicloud.core.widget.UButton
-        android:id="@+id/rButton"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="RWidget"
-        android:textColor="#fff"
-        android:textSize="18dp"
-        app:background_normal="@array/array_l_r"
-        app:corner_radius="10dp"
-        app:gradient_orientation="LEFT_RIGHT"
-        app:gradient_type="linear"
-        app:ripple="true" />
-
+        <com.unicloud.core.widget.UButton
+            android:id="@+id/rButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="RWidget"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            app:background_normal="@array/array_l_r"
+            app:corner_radius="10dp"
+            app:gradient_orientation="LEFT_RIGHT"
+            app:gradient_type="linear"
+            app:ripple="true" />
+    </LinearLayout>
 </LinearLayout>
 

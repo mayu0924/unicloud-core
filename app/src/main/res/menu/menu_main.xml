@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_camera"
+        android:icon="@mipmap/ic_menu_camera"
+        android:orderInCategory="100"
+        android:title="手机拍照"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/menu_storage"
+        android:icon="@mipmap/ic_menu_storage"
+        android:title="手机存储"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/menu_share"
+        android:icon="@mipmap/ic_toolbar_gift_white"
+        android:orderInCategory="90"
+        android:title="分享"
+        app:showAsAction="ifRoom" />
+
+    <!--    android:icon="@drawable/shop_car"-->
+</menu>
+
+    <!--    app:showAsAction的属性值:-->
+    <!--    alaways:这个值会使菜单项一直显示在ActionBar上。-->
+    <!--    ifRoom:     如果有足够的空间,这个值会使菜单显示在ActionBar上。-->
+    <!--    never:       这个值菜单永远不会出现在ActionBar是。-->
+    <!--    withText:   这个值使菜单和它的图标，菜单文本一起显示。-->
+    <!--    android:orderInCategory 设置优先级，值越大优先级越低(菜单中会根据值排序)-->

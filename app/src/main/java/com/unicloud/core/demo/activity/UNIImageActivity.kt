@@ -19,7 +19,6 @@ class UNIImageActivity : BaseActivity<NoViewModel>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        title = "UNIImageView"
     }
 
     override fun initData() {

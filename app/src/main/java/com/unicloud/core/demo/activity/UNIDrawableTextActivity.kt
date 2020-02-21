@@ -21,7 +21,6 @@ class UNIDrawableTextActivity : BaseActivity<NoViewModel>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        title = "UNIDrawableText"
     }
 
     override fun initData() {

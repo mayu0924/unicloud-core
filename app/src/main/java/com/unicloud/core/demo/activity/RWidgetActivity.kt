@@ -19,7 +19,6 @@ class RWidgetActivity : BaseActivity<NoViewModel>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        title = "RWidget"
     }
 
     override fun initData() {

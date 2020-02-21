@@ -116,6 +116,7 @@ class UNIButton : AppCompatButton {
                 } else {// 5.0以下变色效果
                     // 注意此处的add顺序，normal必须在最后一个，否则其他状态无效
                     // 设置pressed状态
+                    stateListDrawable = StateListDrawable()
                     stateListDrawable.apply {
                         addState(intArrayOf(android.R.attr.state_pressed), pressedGradientDrawable)
                         // 设置normal状态

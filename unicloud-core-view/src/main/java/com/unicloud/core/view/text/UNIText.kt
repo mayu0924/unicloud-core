@@ -64,7 +64,7 @@ class UNIText : AppCompatTextView {
     /**
      * shape样式集合
      */
-    private lateinit var stateListDrawable: StateListDrawable
+    private var stateListDrawable: StateListDrawable = StateListDrawable()
 
     private var mGradientOrientation = 0
 

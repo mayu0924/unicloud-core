@@ -2,6 +2,8 @@ package com.unicloud.core.demo.activity
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import com.blankj.utilcode.util.ToastUtils
 import com.unicloud.core.demo.R
 import com.unicloud.core.mvvm.BaseActivity
 import com.unicloud.core.mvvm.NoViewModel
@@ -18,7 +20,25 @@ class UNIButtonActivity : BaseActivity<NoViewModel>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        title = "UNIButton"
+        toolBar.init(this, R.mipmap.ic_toolbar_more_white)
+            .navigationClickListener { finish() }
+            .menuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_share -> {
+                        ToastUtils.showShort(it.title)
+                    }
+                }
+            }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        toolBar.createOptionMenu(this, R.menu.menu_button, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        toolBar.prepareOptionsMenu(menu)
+        return super.onPrepareOptionsMenu(menu)
     }
 
     override fun initData() {

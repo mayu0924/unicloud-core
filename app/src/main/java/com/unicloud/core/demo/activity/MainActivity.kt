@@ -3,12 +3,15 @@ package com.unicloud.core.demo.activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import androidx.lifecycle.Observer
-import com.unicloud.core.demo.activity.vm.MainViewModel
+import com.blankj.utilcode.util.ToastUtils
 import com.unicloud.core.demo.R
+import com.unicloud.core.demo.activity.vm.MainViewModel
 import com.unicloud.core.mvvm.BaseActivity
 import com.unicloud.core.mvvm.event.Message
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : BaseActivity<MainViewModel>() {
 
@@ -21,7 +24,30 @@ class MainActivity : BaseActivity<MainViewModel>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
+        toolBar.init(this, R.mipmap.ic_toolbar_more_white)
+            .menuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_share -> {
+                        ToastUtils.showShort(it.title)
+                    }
+                    R.id.menu_camera -> {
+                        ToastUtils.showShort(it.title)
+                    }
+                    R.id.menu_storage -> {
+                        ToastUtils.showShort(it.title)
+                    }
+                }
+            }
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        toolBar.createOptionMenu(this, R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        toolBar.prepareOptionsMenu(menu)
+        return super.onPrepareOptionsMenu(menu)
     }
 
     override fun initData() {
@@ -51,13 +77,5 @@ class MainActivity : BaseActivity<MainViewModel>() {
     override fun handleEvent(msg: Message) {
         super.handleEvent(msg)
         Log.d("event", msg.toString())
-    }
-
-    override fun showLoading() {
-        super.showLoading()
-    }
-
-    override fun dismissLoading() {
-        super.dismissLoading()
     }
 }

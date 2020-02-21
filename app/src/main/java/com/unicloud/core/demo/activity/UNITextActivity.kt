@@ -19,7 +19,6 @@ class UNITextActivity : BaseActivity<NoViewModel>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        title = "UNIText"
     }
 
     override fun initData() {
