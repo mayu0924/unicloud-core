@@ -1,11 +1,16 @@
 package com.unicloud.core.mvvm
 
+import android.os.Build
 import android.os.Bundle
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuBuilder
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.blankj.utilcode.util.ToastUtils
 import com.unicloud.core.mvvm.event.Message
+import java.lang.reflect.Method
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -15,6 +20,8 @@ import java.lang.reflect.ParameterizedType
 abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     lateinit var viewModel: VM
+
+    protected open fun toolbarMenuRes(): Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +39,33 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
     abstract fun layoutId(): Int
     abstract fun initView(savedInstanceState: Bundle?)
     abstract fun initData()
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        toolbarMenuRes()?.let {
+            menuInflater.inflate(it, menu)
+        }
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        //使菜单上图标可见
+        if (menu != null && menu is MenuBuilder) { //编sdk版本24的情况 可以直接使用 setOptionalIconsVisible
+            if (Build.VERSION.SDK_INT > 23) {
+                val builder: MenuBuilder = menu as MenuBuilder
+                builder.setOptionalIconsVisible(true)
+            } else { //sdk版本24的以下，需要通过反射去执行该方法
+                try {
+                    val m: Method = menu.javaClass
+                        .getDeclaredMethod("setOptionalIconsVisible", java.lang.Boolean.TYPE)
+                    m.isAccessible = true
+                    m.invoke(menu, true)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        return super.onPrepareOptionsMenu(menu)
+    }
 
     /**
      * 注册 UI 事件

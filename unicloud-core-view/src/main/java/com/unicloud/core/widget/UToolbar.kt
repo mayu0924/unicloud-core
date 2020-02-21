@@ -33,31 +33,6 @@ class UToolbar @JvmOverloads constructor(
         return this
     }
 
-    fun createOptionMenu(activity: AppCompatActivity, menuRes: Int?, menu: Menu?) {
-        menuRes?.let {
-            activity.menuInflater.inflate(it, menu)
-        }
-    }
-
-    fun prepareOptionsMenu(menu: Menu?) {
-        //使菜单上图标可见
-        if (menu != null && menu is MenuBuilder) { //编sdk版本24的情况 可以直接使用 setOptionalIconsVisible
-            if (Build.VERSION.SDK_INT > 23) {
-                val builder: MenuBuilder = menu as MenuBuilder
-                builder.setOptionalIconsVisible(true)
-            } else { //sdk版本24的以下，需要通过反射去执行该方法
-                try {
-                    val m: Method = menu.javaClass
-                        .getDeclaredMethod("setOptionalIconsVisible", java.lang.Boolean.TYPE)
-                    m.isAccessible = true
-                    m.invoke(menu, true)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-        }
-    }
-
     fun navigationClickListener(listener: (v: View) -> Unit): UToolbar {
         setNavigationOnClickListener {
             listener.invoke(it)
@@ -71,5 +46,26 @@ class UToolbar @JvmOverloads constructor(
             true
         }
         return this
+    }
+
+    companion object{
+        fun prepareOptionsMenu(menu: Menu?) {
+            //使菜单上图标可见
+            if (menu != null && menu is MenuBuilder) { //编sdk版本24的情况 可以直接使用 setOptionalIconsVisible
+                if (Build.VERSION.SDK_INT > 23) {
+                    val builder: MenuBuilder = menu as MenuBuilder
+                    builder.setOptionalIconsVisible(true)
+                } else { //sdk版本24的以下，需要通过反射去执行该方法
+                    try {
+                        val m: Method = menu.javaClass
+                            .getDeclaredMethod("setOptionalIconsVisible", java.lang.Boolean.TYPE)
+                        m.isAccessible = true
+                        m.invoke(menu, true)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+        }
     }
 }

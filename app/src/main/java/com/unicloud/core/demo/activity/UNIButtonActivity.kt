@@ -15,6 +15,8 @@ class UNIButtonActivity : BaseActivity<NoViewModel>() {
     override fun layoutId(): Int =
         R.layout.activity_uni_button
 
+    override fun toolbarMenuRes(): Int? = R.menu.menu_button
+
     override fun startObserve() {
 
     }
@@ -29,16 +31,6 @@ class UNIButtonActivity : BaseActivity<NoViewModel>() {
                     }
                 }
             }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        toolBar.createOptionMenu(this, R.menu.menu_button, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        toolBar.prepareOptionsMenu(menu)
-        return super.onPrepareOptionsMenu(menu)
     }
 
     override fun initData() {

@@ -8,7 +8,6 @@
     <com.unicloud.core.widget.UToolbar
         android:id="@+id/toolBar"
         style="@style/ToolBar.Back"
-        app:subtitle="@string/app_name"
         app:title="UNIButton" />
 
     <ScrollView

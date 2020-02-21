@@ -39,8 +39,9 @@
         <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:fitsSystemWindows">true</item>
-        <item name="elevation">0dp</item>
+        <item name="elevation">2dp</item>
         <item name="buttonGravity">center_vertical</item>
+
 
         <!--    自定义ToolBar背景    -->
         <item name="background_normal">@array/array_l_r</item>

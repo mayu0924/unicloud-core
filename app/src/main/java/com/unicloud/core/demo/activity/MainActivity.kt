@@ -3,7 +3,6 @@ package com.unicloud.core.demo.activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
 import androidx.lifecycle.Observer
 import com.blankj.utilcode.util.ToastUtils
 import com.unicloud.core.demo.R
@@ -16,6 +15,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity<MainViewModel>() {
 
     override fun layoutId(): Int = R.layout.activity_main
+
+    override fun toolbarMenuRes(): Int? = R.menu.menu_main
 
     override fun startObserve() {
         viewModel.mArticleListBean.observe(this, Observer {
@@ -40,15 +41,6 @@ class MainActivity : BaseActivity<MainViewModel>() {
             }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        toolBar.createOptionMenu(this, R.menu.menu_main, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        toolBar.prepareOptionsMenu(menu)
-        return super.onPrepareOptionsMenu(menu)
-    }
 
     override fun initData() {
 //        viewModel.getHomeArticles()
