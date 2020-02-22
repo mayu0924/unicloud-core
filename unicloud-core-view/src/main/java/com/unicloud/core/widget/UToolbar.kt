@@ -14,14 +14,19 @@ import com.unicloud.core.widget.iface.RHelper
 import java.lang.reflect.Method
 
 class UToolbar @JvmOverloads constructor(
-    context: Context?,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
+        context: Context?,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
 ) : Toolbar(context, attrs, defStyleAttr), RHelper<UBaseHelper<*>?> {
-    private val mHelper: UBaseHelper<View> =
-        UBaseHelper(context, this, attrs)
 
-    override fun getHelper(): UBaseHelper<*> {
+    private var mHelper: UBaseHelper<View>? = null
+
+    init {
+        mHelper = UBaseHelper(context, this, attrs)
+    }
+
+
+    override fun getHelper(): UBaseHelper<*>? {
         return mHelper
     }
 
@@ -48,7 +53,7 @@ class UToolbar @JvmOverloads constructor(
         return this
     }
 
-    companion object{
+    companion object {
         fun prepareOptionsMenu(menu: Menu?) {
             //使菜单上图标可见
             if (menu != null && menu is MenuBuilder) { //编sdk版本24的情况 可以直接使用 setOptionalIconsVisible
@@ -58,7 +63,7 @@ class UToolbar @JvmOverloads constructor(
                 } else { //sdk版本24的以下，需要通过反射去执行该方法
                     try {
                         val m: Method = menu.javaClass
-                            .getDeclaredMethod("setOptionalIconsVisible", java.lang.Boolean.TYPE)
+                                .getDeclaredMethod("setOptionalIconsVisible", java.lang.Boolean.TYPE)
                         m.isAccessible = true
                         m.invoke(menu, true)
                     } catch (e: Exception) {
