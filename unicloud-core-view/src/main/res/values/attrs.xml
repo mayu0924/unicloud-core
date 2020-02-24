@@ -81,7 +81,7 @@
         <attr name="uni_image_mask_color" format="color" />
     </declare-styleable>
 
-<!--    =====================================================================================    -->
+    <!--    =====================================================================================    -->
 
     !--基础通用属性-->
 
@@ -780,6 +780,14 @@
         <attr name="shadow_dy" />
         <attr name="shadow_color" />
         <attr name="shadow_radius" />
+    </declare-styleable>
+
+    <!-- RRadioButton -->
+    <declare-styleable name="UToolbar">
+
+        <!--四周圆角度、左上、右上、左下、右下-->
+        <attr name="centerTitle" format="boolean" />
+
     </declare-styleable>
 
     <!-- RCheckBox -->

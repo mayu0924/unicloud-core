@@ -8,8 +8,14 @@
     <com.unicloud.core.widget.UToolbar
         android:id="@+id/toolBar"
         style="@style/ToolBar.Back"
-        app:menu="@menu/menu_main"
-        app:title="UNIButton" />
+        app:menu="@menu/menu_button"
+        app:title="这不是一个居中的标题啊啊啊啊啊啊" />
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/red"/>
 
     <ScrollView
         android:layout_width="match_parent"

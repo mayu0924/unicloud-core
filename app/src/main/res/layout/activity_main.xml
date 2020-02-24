@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.unicloud.core.widget.ULinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,8 +10,18 @@
     <com.unicloud.core.widget.UToolbar
         android:id="@+id/toolBar"
         style="@style/ToolBar.Home"
-        app:title="自定义View"
-        app:subtitle="@string/app_name" />
+        app:centerTitle="true"
+        app:menu="@menu/menu_main"
+        app:subtitle=""
+        app:title="这是一个居中的标题啊啊啊" />
+
+    <com.unicloud.core.widget.UTextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:text="标题"
+        android:textColor="@color/red"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,5 +93,5 @@
             app:gradient_type="linear"
             app:ripple="true" />
     </LinearLayout>
-</LinearLayout>
+</com.unicloud.core.widget.ULinearLayout>
 

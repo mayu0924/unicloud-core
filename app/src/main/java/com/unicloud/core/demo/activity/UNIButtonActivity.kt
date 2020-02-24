@@ -2,7 +2,6 @@ package com.unicloud.core.demo.activity
 
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
 import com.blankj.utilcode.util.ToastUtils
 import com.unicloud.core.demo.R
 import com.unicloud.core.mvvm.BaseActivity
