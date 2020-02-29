@@ -1,11 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 19
@@ -43,6 +43,16 @@ dependencies {
     api 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 
+    api 'me.jessyan:autosize:1.2.0'
+
+    api("com.github.bumptech.glide:glide:4.9.0") {
+        exclude group: "com.android.support"
+        exclude group: "androidx.*"
+    }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    api 'jp.wasabeef:glide-transformations:4.0.0@aar'//图片转换工具
+    annotationProcessor 'androidx.annotation:annotation:1.1.0'
+
     api 'com.blankj:utilcodex:1.26.0'
 
     // net 相关
@@ -54,16 +64,21 @@ dependencies {
     // 同时支持多个 BaseUrl 【https://github.com/JessYanCoding/RetrofitUrlManager/blob/master/README-zh.md】
     api 'me.jessyan:retrofit-url-manager:1.4.0'
     api 'com.orhanobut:logger:2.2.0'
+
+
+    api 'cn.hchstudio:kpermissions:1.0.9'
+
+    api 'com.mayu.core:ui:0.1.4'
 }
 
 // 新增
-//publish {
-//    repoName = 'unicloud'
-//    userOrg = 'msy649166'        //bintray.com用户名
-//    groupId = 'com.mayu.core'    //jcenter上的路径
-//    artifactId = 'mvvm'   //项目名称
-//    publishVersion = '0.3.2'//版本号
-//    desc = 'mvvm'//描述，自由填写
-//    website = 'https://github.com/mayu0924/unicloud-core' // 网址，自由填写
-//}
+publish {
+    repoName = 'unicloud'
+    userOrg = 'msy649166'        //bintray.com用户名
+    groupId = 'com.mayu.core'    //jcenter上的路径
+    artifactId = 'mvvm'   //项目名称
+    publishVersion = '0.3.5'//版本号
+    desc = 'mvvm'//描述，自由填写
+    website = 'https://github.com/mayu0924/unicloud-core' // 网址，自由填写
+}
 //gradlew clean build bintrayUpload -PbintrayUser=msy649166 -PbintrayKey=5dc41b1720e3bf6cd80871a56473ba20350c04f6 -PdryRun=false

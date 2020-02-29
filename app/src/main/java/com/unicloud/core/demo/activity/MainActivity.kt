@@ -12,12 +12,15 @@ import com.unicloud.core.demo.R
 import com.unicloud.core.demo.activity.vm.MainViewModel
 import com.unicloud.core.mvvm.BaseActivity
 import com.unicloud.core.mvvm.event.Message
+import com.unicloud.core.mvvm.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseActivity<MainViewModel>() {
 
     override fun layoutId(): Int = R.layout.activity_main
+
+    override fun setToolbar(): Toolbar = toolBar
 
     override fun toolbarMenuRes(): Int? = R.menu.menu_main
 
@@ -28,6 +31,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
+        StatusBarUtil.setLightMode(this)
         toolBar.init(this, R.mipmap.ic_toolbar_more_white)
             .menuItemClickListener {
                 when (it.itemId) {
@@ -42,6 +46,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
                     }
                 }
             }
+        toolBar.updateTitleCenter()
     }
 
     fun setTitleCenter(toolbar: Toolbar) {

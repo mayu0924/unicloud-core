@@ -1,4 +1,4 @@
-package com.unicloud.core.mvvm
+package com.unicloud.core.mvvm.dialog
 
 import android.app.Dialog
 import android.content.Context
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.WindowManager
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.KeyboardUtils
+import com.unicloud.core.mvvm.R
 
 /**
  * @author mayu
@@ -17,8 +18,10 @@ open class BaseDialog : Dialog {
     private var mWidthModulus = 0.8f
     private var mGravity = Gravity.CENTER_HORIZONTAL
 
-    constructor(context: Context?) : super(context!!, R.style.CommonDialog) {}
-    constructor(context: Context, themeResId: Int) : super(context, themeResId) {}
+    constructor(context: Context?) : super(context!!,
+        R.style.CommonDialog
+    )
+    constructor(context: Context, themeResId: Int) : super(context, themeResId)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

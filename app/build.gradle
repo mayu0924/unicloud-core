@@ -54,10 +54,10 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
-    implementation 'me.jessyan:autosize:1.1.2'
+//    implementation 'me.jessyan:autosize:1.1.2'
 
     implementation project(path: ':unicloud-core-mvvm')
-    implementation project(path: ':unicloud-core-view')
+//    implementation project(path: ':unicloud-core-view')
 
 //    releaseImplementation 'com.mayu.core:mvvm:0.3.0'
 //    releaseImplementation 'com.mayu.core:ui:0.0.2'

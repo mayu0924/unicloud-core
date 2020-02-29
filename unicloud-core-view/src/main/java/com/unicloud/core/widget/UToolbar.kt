@@ -1,5 +1,6 @@
 package com.unicloud.core.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
@@ -36,7 +37,7 @@ class UToolbar @JvmOverloads constructor(
     init {
         mHelper = UToolbarHelper(context, this, attrs)
         if (mHelper?.mIsCenterTitle == true)
-            titleCenter()
+            updateTitleCenter()
     }
 
     override fun getHelper(): UBaseHelper<*>? {
@@ -44,6 +45,7 @@ class UToolbar @JvmOverloads constructor(
     }
 
     //R.mipmap.ic_toolbar_more_white
+    @SuppressLint("RestrictedApi")
     fun init(activity: AppCompatActivity, overflowIcon: Int?): UToolbar {
         activity.setSupportActionBar(this)
         activity.supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
@@ -53,9 +55,15 @@ class UToolbar @JvmOverloads constructor(
 
     var globalLayoutListener: ViewTreeObserver.OnGlobalLayoutListener? = null
 
-    fun titleCenter() {
-        globalLayoutListener = ViewTreeObserver.OnGlobalLayoutListener {
-            update()
+    fun updateTitleCenter() {
+        if (globalLayoutListener == null) {
+            globalLayoutListener = ViewTreeObserver.OnGlobalLayoutListener {
+                if (mHelper?.mIsCenterTitle == true) {
+                    update()
+                }
+            }
+        } else {
+            viewTreeObserver.removeOnGlobalLayoutListener(globalLayoutListener)
         }
         viewTreeObserver.addOnGlobalLayoutListener(globalLayoutListener)
     }
@@ -78,15 +86,14 @@ class UToolbar @JvmOverloads constructor(
 
             val tRight = screenWidth - tLeft - this.width
 
-            System.out.println("${tRight}, ${screenWidth}, ${tLeft}, ${this.width}")
-
             if (tLeft < tRight) {
                 setPadding(tRight - tLeft, 0, 0, 0)
             } else {
                 setPadding(0, 0, tLeft - tRight, 0)
             }
-            if (this.width == mTitleTextViewWidth) {
+            if (this.width == mTitleTextViewWidth && globalLayoutListener != null) {
                 viewTreeObserver.removeOnGlobalLayoutListener(globalLayoutListener)
+                globalLayoutListener = null
             }
             mTitleTextViewWidth = this.width
         }
@@ -153,6 +160,7 @@ class UToolbar @JvmOverloads constructor(
     }
 
     companion object {
+        @SuppressLint("RestrictedApi")
         fun prepareOptionsMenu(menu: Menu?) {
             //使菜单上图标可见
             if (menu != null && menu is MenuBuilder) { //编sdk版本24的情况 可以直接使用 setOptionalIconsVisible
