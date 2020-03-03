@@ -92,6 +92,16 @@
             app:gradient_orientation="LEFT_RIGHT"
             app:gradient_type="linear"
             app:ripple="true" />
+
+        <com.unicloud.core.widget.UEditText
+            android:id="@+id/uText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:background_normal="#fefefe"
+            app:corner_radius="4dp"
+            app:border_color_normal="@color/orange"
+            app:border_width_normal="1px"/>
     </LinearLayout>
 </com.unicloud.core.widget.ULinearLayout>
 

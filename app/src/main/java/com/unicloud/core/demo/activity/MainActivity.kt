@@ -13,6 +13,7 @@ import com.unicloud.core.demo.activity.vm.MainViewModel
 import com.unicloud.core.mvvm.BaseActivity
 import com.unicloud.core.mvvm.event.Message
 import com.unicloud.core.mvvm.utils.StatusBarUtil
+import com.unicloud.core.utils.filter.InputTextFilter
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -47,6 +48,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
                 }
             }
         toolBar.updateTitleCenter()
+        uText.filters = arrayOf(InputTextFilter(this, {}))
     }
 
     fun setTitleCenter(toolbar: Toolbar) {

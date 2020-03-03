@@ -50,7 +50,7 @@ class InputTextFilter : InputFilter {
             }
             return ""
         }
-        return ""
+        return source
     }
 
     companion object {
