@@ -20,6 +20,7 @@ import com.unicloud.core.mvvm.event.Message
 import com.unicloud.core.mvvm.utils.NetworkManager
 import com.unicloud.core.mvvm.utils.SoftKeyBoardListener
 import com.unicloud.core.mvvm.utils.StatusBarUtil
+import com.unicloud.core.utils.filter.InputEmojiFilter
 import me.jessyan.autosize.internal.CustomAdapt
 import java.lang.reflect.Method
 import java.lang.reflect.ParameterizedType

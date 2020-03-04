@@ -38,9 +38,8 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), CustomAdapt {
     private var mLoadingDialog: BaseDialog? = null
 
     private fun initLoadingDialog() {
-        mLoadingDialog?.let {
+        if (mLoadingDialog == null)
             mLoadingDialog = LoadingDialog(activity)
-        }
     }
 
     open fun initToolbar() {

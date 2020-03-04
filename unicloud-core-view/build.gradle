@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
 
 
     defaultConfig {
@@ -57,7 +57,7 @@ dependencies {
 //    // ray.com用户名
 //    groupId = 'com.mayu.core'    //jcenter上的路径
 //    artifactId = 'ui'   //项目名称
-//    publishVersion = '0.1.5'//版本号
+//    publishVersion = '0.1.6'//版本号
 //    desc = 'ui'//描述，自由填写
 //    website = 'https://github.com/mayu0924/unicloud-core' // 网址，自由填写
 //}
