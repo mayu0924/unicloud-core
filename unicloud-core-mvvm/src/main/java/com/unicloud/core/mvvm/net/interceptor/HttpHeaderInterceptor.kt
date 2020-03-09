@@ -26,7 +26,7 @@ class HttpHeaderInterceptor(private var mMapHeader: MutableMap<String, String>?)
                 .build()
         } else {
             BaseRetrofitClient.requestKeyMap[requestKey] = System.currentTimeMillis()
-            LogUtils.eTag("REPEAT-REQUEST", "注册请求:" + requestKey + " ----  " + Thread.currentThread().name)
+//            LogUtils.eTag("REPEAT-REQUEST", "注册请求:" + requestKey + " ----  " + Thread.currentThread().name)
         }
 
         val builder = originalRequest.newBuilder()

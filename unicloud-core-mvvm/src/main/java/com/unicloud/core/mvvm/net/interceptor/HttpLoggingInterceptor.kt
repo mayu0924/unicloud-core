@@ -95,17 +95,17 @@ class HttpLoggingInterceptor : Interceptor {
         response = try {
             chain.proceed(request)
         } catch (e: Exception) {
-            LogUtils.eTag("<-- HTTP FAILED: $e")
+//            LogUtils.eTag("<-- HTTP FAILED: $e")
             //异常的返回也是完成Http请求。在这里移除请求登记
             if (!TextUtils.isEmpty(e.toString()) && e.toString().contains(CUSTOM_REPEAT_REQ_PROTOCOL)) {
-                LogUtils.iTag("REPEAT-REQUEST", "remove(requestKey)1     " + Thread.currentThread().name)
+//                LogUtils.iTag("REPEAT-REQUEST", "remove(requestKey)1     " + Thread.currentThread().name)
             } else {
                 BaseRetrofitClient.requestKeyMap.remove(requestKey)
             }
             throw e
         }
         BaseRetrofitClient.requestKeyMap.remove(requestKey) //在这里移除正常的请求登记
-        LogUtils.iTag("REPEAT-REQUEST", "remove(requestKey)     " + Thread.currentThread().name)
+//        LogUtils.iTag("REPEAT-REQUEST", "remove(requestKey)     " + Thread.currentThread().name)
 
         //==========================================================================================
 
