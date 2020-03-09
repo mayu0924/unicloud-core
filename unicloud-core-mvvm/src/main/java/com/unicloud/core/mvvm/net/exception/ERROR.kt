@@ -32,7 +32,12 @@ enum class ERROR(private val code: Int, private val err: String) {
     /**
      * TOKEN错误
      */
-    TOKEN_ERROR(1007, "TOKEN错误");
+    TOKEN_ERROR(1007, "TOKEN错误"),
+
+    /**
+     * 重复请求
+     */
+    REPEAT_REQUEST(1008, "重复请求");
 
     fun getValue(): String {
         return err

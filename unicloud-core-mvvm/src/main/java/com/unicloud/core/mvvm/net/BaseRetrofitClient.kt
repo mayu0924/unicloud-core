@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.text.TextUtils
 import com.blankj.utilcode.util.CacheMemoryUtils
-import com.blankj.utilcode.util.LogUtils
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
@@ -33,6 +32,10 @@ abstract class BaseRetrofitClient {
         var CONTEXT: Context? = null
         var TIME_OUT = 30.toLong()
         var READ_TIME_OUT = 30.toLong()
+
+        //Value 里面保存的是时间
+        var requestKeyMap = mutableMapOf<String, Long>()
+        const val CUSTOM_REPEAT_REQ_PROTOCOL = "REPEAT-REQUEST-EXCEPTION"
     }
 
     private var mRetrofitBuilder: Retrofit.Builder = Retrofit.Builder()
@@ -65,25 +68,25 @@ abstract class BaseRetrofitClient {
         val cache = HttpCacheInterceptor(CONTEXT!!, 0, 0)
         // =============================================================
         builder.addInterceptor(header)
-            .addInterceptor {
-                it.proceed(handleRequest(it.request()))
-            }
+                .addInterceptor {
+                    it.proceed(handleRequest(it.request()))
+                }
 //            .addInterceptor(progress)
-            .addInterceptor(cache)
-            .addNetworkInterceptor(cache)
-            .addInterceptor(logging)
-            .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
-            .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
+                .addInterceptor(cache)
+                .addNetworkInterceptor(cache)
+                .addInterceptor(logging)
+                .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
+                .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
 
         if (isUseCookie()) {
             val cookieJar =
-                PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(CONTEXT))
+                    PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(CONTEXT))
             builder.cookieJar(cookieJar)
         }
 
         if (isUseSSL()) {
             builder.sslSocketFactory(getSSLSocketFactory())
-                .hostnameVerifier(org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)
+                    .hostnameVerifier(org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)
         }
 
         handleBuilder(builder)
@@ -107,7 +110,7 @@ abstract class BaseRetrofitClient {
         }
 
 
-    fun clear(){
+    fun clear() {
         serviceCache.clear()
     }
 
@@ -160,16 +163,16 @@ abstract class BaseRetrofitClient {
             @SuppressLint("TrustAllX509TrustManager")
             @Throws(CertificateException::class)
             override fun checkClientTrusted(
-                chain: Array<java.security.cert.X509Certificate>,
-                authType: String
+                    chain: Array<java.security.cert.X509Certificate>,
+                    authType: String
             ) {
             }
 
             @SuppressLint("TrustAllX509TrustManager")
             @Throws(CertificateException::class)
             override fun checkServerTrusted(
-                chain: Array<java.security.cert.X509Certificate>,
-                authType: String
+                    chain: Array<java.security.cert.X509Certificate>,
+                    authType: String
             ) {
             }
 
@@ -181,11 +184,11 @@ abstract class BaseRetrofitClient {
         // Install the all-trusting trust manager
         val sslContext = SSLContext.getInstance("TLS")
         sslContext.init(
-            null, trustAllCerts,
-            SecureRandom()
+                null, trustAllCerts,
+                SecureRandom()
         )
         // Create an ssl socket factory with our all-trusting manager
         return sslContext
-            .socketFactory
+                .socketFactory
     }
 }

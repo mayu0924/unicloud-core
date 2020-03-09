@@ -27,7 +27,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
     override fun startObserve() {
         viewModel.mArticleListBean.observe(this, Observer {
-            //            chapterTitle.text = it.datas[0].title
+            uText.setText(it.datas[0].title)
         })
     }
 
@@ -48,7 +48,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
                 }
             }
         toolBar.updateTitleCenter()
-        uText.filters = arrayOf(InputTextFilter(this, {}))
+//        uText.filters = arrayOf(InputTextFilter(this, {}))
     }
 
     fun setTitleCenter(toolbar: Toolbar) {
@@ -97,6 +97,13 @@ class MainActivity : BaseActivity<MainViewModel>() {
         }
         rButton.setOnClickListener {
             startActivity(Intent(this, RWidgetActivity::class.java))
+        }
+        request.setOnClickListener {
+            viewModel.getHomeArticles()
+        }
+        requestRepeat.setOnClickListener {
+            viewModel.getHomeArticles()
+            viewModel.getHomeArticles()
         }
     }
 

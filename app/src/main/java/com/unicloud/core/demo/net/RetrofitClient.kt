@@ -5,6 +5,7 @@ import android.os.Build
 import com.unicloud.core.demo.BuildConfig
 import com.unicloud.core.demo.R
 import com.unicloud.core.demo.model.api.ApiService
+import com.unicloud.core.demo.model.api.ApiService.Companion.BASE_URL
 import com.unicloud.core.mvvm.net.BaseRetrofitClient
 import com.unicloud.core.mvvm.net.BaseService
 import okhttp3.OkHttpClient
@@ -36,7 +37,8 @@ object RetrofitClient : BaseRetrofitClient() {
         CONTEXT = context
     }
 
-    override fun baseUrl() = "https://www.unicloud.com"
+//    override fun baseUrl() = "https://www.unicloud.com"
+    override fun baseUrl() = BASE_URL
 
     override fun isDebug(): Boolean = BuildConfig.DEBUG
 

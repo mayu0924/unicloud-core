@@ -193,7 +193,9 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAda
             dismissLoading()
         })
         viewModel.defUI.toastEvent.observe(this, Observer {
-            ToastUtils.showLong(it)
+            if (it != null && it != "" && !it.contains("1008:重复请求")) {
+                ToastUtils.showLong(it)
+            }
         })
         viewModel.defUI.msgEvent.observe(this, Observer {
             handleEvent(it)

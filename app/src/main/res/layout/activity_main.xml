@@ -93,15 +93,48 @@
             app:gradient_type="linear"
             app:ripple="true" />
 
+        <com.unicloud.core.widget.UButton
+            android:id="@+id/request"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="request"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            app:background_normal="@array/array_l_r"
+            app:corner_radius="10dp"
+            app:gradient_orientation="LEFT_RIGHT"
+            app:gradient_type="linear"
+            app:ripple="true" />
+
+        <com.unicloud.core.widget.UButton
+            android:id="@+id/requestRepeat"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="requestRepeat"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            app:background_normal="@array/array_l_r"
+            app:corner_radius="10dp"
+            app:gradient_orientation="LEFT_RIGHT"
+            app:gradient_type="linear"
+            app:ripple="true" />
         <com.unicloud.core.widget.UEditText
             android:id="@+id/uText"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
             android:layout_marginTop="10dp"
             app:background_normal="#fefefe"
             app:corner_radius="4dp"
             app:border_color_normal="@color/orange"
-            app:border_width_normal="1px"/>
+            app:border_width_normal="1px"
+            android:text="@string/app_name"
+            android:gravity="center"
+            android:textColor="@color/red"/>
     </LinearLayout>
 </com.unicloud.core.widget.ULinearLayout>
 

@@ -1,14 +1,20 @@
 package com.unicloud.core.mvvm.net.interceptor
 
+import android.text.TextUtils
+import android.util.Log
+import com.blankj.utilcode.util.EncryptUtils
 import com.blankj.utilcode.util.JsonUtils
+import com.blankj.utilcode.util.LogUtils
+import com.unicloud.core.mvvm.net.BaseRetrofitClient
+import com.unicloud.core.mvvm.net.BaseRetrofitClient.Companion.CUSTOM_REPEAT_REQ_PROTOCOL
 import com.unicloud.core.mvvm.net.interceptor.log.Level
 import com.unicloud.core.mvvm.net.interceptor.log.Printer
-import me.jessyan.retrofiturlmanager.parser.DomainUrlParser
 import okhttp3.*
 import okhttp3.internal.platform.Platform
 import okhttp3.internal.platform.Platform.INFO
 import java.io.IOException
 import java.util.concurrent.TimeUnit
+
 
 /**
  * 借鉴其他Demo里的日志打印
@@ -80,7 +86,28 @@ class HttpLoggingInterceptor : Interceptor {
         }
 
         val st = System.nanoTime()
-        val response = chain.proceed(request)
+//        val response = chain.proceed(request)
+
+        //==========================================================================================
+        //获取请求的KEY ，以便后面去除
+        val requestKey: String = EncryptUtils.encryptMD5ToString(request.toString())
+        val response: Response //准备返回Response
+        response = try {
+            chain.proceed(request)
+        } catch (e: Exception) {
+            LogUtils.eTag("<-- HTTP FAILED: $e")
+            //异常的返回也是完成Http请求。在这里移除请求登记
+            if (!TextUtils.isEmpty(e.toString()) && e.toString().contains(CUSTOM_REPEAT_REQ_PROTOCOL)) {
+                LogUtils.iTag("REPEAT-REQUEST", "remove(requestKey)1     " + Thread.currentThread().name)
+            } else {
+                BaseRetrofitClient.requestKeyMap.remove(requestKey)
+            }
+            throw e
+        }
+        BaseRetrofitClient.requestKeyMap.remove(requestKey) //在这里移除正常的请求登记
+        LogUtils.iTag("REPEAT-REQUEST", "remove(requestKey)     " + Thread.currentThread().name)
+
+        //==========================================================================================
 
         val segmentList = request.url().encodedPathSegments()
         val chainMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - st)
