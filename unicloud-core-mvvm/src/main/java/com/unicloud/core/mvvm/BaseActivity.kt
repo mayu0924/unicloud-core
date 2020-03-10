@@ -26,7 +26,7 @@ import java.lang.reflect.Method
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAdapt,
-    NetworkManager.OnNetworkChangedListener {
+        NetworkManager.OnNetworkChangedListener {
     var isNetAvailable = true
 
     private var mLoadingDialog: BaseDialog? = null
@@ -72,7 +72,7 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAda
         }
 
         SoftKeyBoardListener.setListener(this, object :
-            SoftKeyBoardListener.OnSoftKeyBoardChangeListener {
+                SoftKeyBoardListener.OnSoftKeyBoardChangeListener {
             override fun keyBoardShow(height: Int) {
                 onSoftInputHeightChanged(height, true)
             }
@@ -146,9 +146,9 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAda
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
     ) {
         mKPermission.onRequestPermissionsResult(requestCode, permissions, grantResults)
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -171,7 +171,7 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAda
             } else { //sdk版本24的以下，需要通过反射去执行该方法
                 try {
                     val m: Method = menu.javaClass
-                        .getDeclaredMethod("setOptionalIconsVisible", java.lang.Boolean.TYPE)
+                            .getDeclaredMethod("setOptionalIconsVisible", java.lang.Boolean.TYPE)
                     m.isAccessible = true
                     m.invoke(menu, true)
                 } catch (e: Exception) {
@@ -193,7 +193,7 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAda
             dismissLoading()
         })
         viewModel.defUI.toastEvent.observe(this, Observer {
-            if (it != null && it != "" && !it.contains("1008:重复请求")) {
+            if (it != null && it != "" && !it.equals("1008:重复请求") && !it.equals("重复请求")) {
                 ToastUtils.showLong(it)
             }
         })
