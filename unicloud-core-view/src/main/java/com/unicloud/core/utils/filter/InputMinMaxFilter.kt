@@ -68,7 +68,7 @@ class InputMinMaxFilter : InputFilter {
         }
         try {
             val input = java.lang.Double.parseDouble(dest.toString() + source.toString())
-            if (isInRange(min, max, input)) {
+            if (isInRange2(min, max, input)) {
                 return null
             } else {
                 if (mToast != null) {
@@ -80,6 +80,10 @@ class InputMinMaxFilter : InputFilter {
         } catch (ignored: Exception) {
         }
         return ""
+    }
+
+    private fun isInRange2(a: Double, b: Double, c: Double): Boolean {
+        return if (b > a) c <= b else c <= a
     }
 
     private fun isInRange(a: Double, b: Double, c: Double): Boolean {
