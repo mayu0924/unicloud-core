@@ -21,6 +21,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.security.SecureRandom
 import java.security.cert.CertificateException
+import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
 import javax.net.ssl.SSLContext
 import javax.net.ssl.SSLSocketFactory
@@ -126,7 +127,7 @@ abstract class BaseRetrofitClient {
     /**
      * 自定义请求头部
      */
-    abstract fun defaultHeader(): MutableMap<String, String>?
+    abstract fun defaultHeader(): ConcurrentHashMap<String, String>?
 
     /**
      * 自定义请求【添加、修改、拦截参数】

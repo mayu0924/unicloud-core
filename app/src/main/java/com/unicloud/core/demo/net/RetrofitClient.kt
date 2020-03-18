@@ -2,7 +2,7 @@ package com.unicloud.core.demo.net
 
 import android.content.Context
 import android.os.Build
-import com.unicloud.core.demo.BuildConfig
+import com.blankj.utilcode.util.AppUtils
 import com.unicloud.core.demo.R
 import com.unicloud.core.demo.model.api.ApiService
 import com.unicloud.core.demo.model.api.ApiService.Companion.BASE_URL
@@ -10,6 +10,7 @@ import com.unicloud.core.mvvm.net.BaseRetrofitClient
 import com.unicloud.core.mvvm.net.BaseService
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import java.util.concurrent.ConcurrentHashMap
 
 /**
  * 网络请求
@@ -20,16 +21,18 @@ object RetrofitClient : BaseRetrofitClient() {
 
     val service: ApiService by lazy { getService(ApiService::class.java) }
 
-    private val header: MutableMap<String, String> by lazy {
-        mutableMapOf(
-            "appName" to (CONTEXT?.resources?.getString(R.string.app_name) ?: "未知应用"),
-            "platform" to "android",
-            "osVersion" to Build.VERSION.RELEASE,
-            "deviceModel" to Build.BRAND + "  " + Build.MODEL,
-            "appVersion" to BuildConfig.VERSION_NAME,
-            "versionCode" to "${BuildConfig.VERSION_CODE}",
-            "workspaceId" to "1",
-            "Authorization" to "bearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.bearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNTgxND.p1T6uZGozIP3yVYspj_plZm10OWURr061u91yXX0fgYEyNDI3LCJhdXRob3JpdGllcyI6WyJ3cml0ZSIsInJlYWQiXSwianRpIjoiMWQ5YzU3M2EtODdhZi00ZTFlLTgwNTAtNGZjNDEyNmJkN2M2IiwiY2xpZW50X2lkIjoiMTU3OTQzMDUxMTkwNyJ9.Ib9c3dluGJLR63tWiJP2E7JBjMwUOLrKfpWr7I9GS6c"
+    private val header: ConcurrentHashMap<String, String> by lazy {
+        ConcurrentHashMap(
+            mutableMapOf(
+                "appName" to (CONTEXT?.resources?.getString(R.string.app_name) ?: "未知应用"),
+                "platform" to "android",
+                "osVersion" to Build.VERSION.RELEASE,
+                "deviceModel" to Build.BRAND + "  " + Build.MODEL,
+                "appVersion" to AppUtils.getAppVersionName(),
+                "versionCode" to "${AppUtils.getAppVersionCode()}",
+                "workspaceId" to "1",
+                "Authorization" to "bearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.bearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNTgxND.p1T6uZGozIP3yVYspj_plZm10OWURr061u91yXX0fgYEyNDI3LCJhdXRob3JpdGllcyI6WyJ3cml0ZSIsInJlYWQiXSwianRpIjoiMWQ5YzU3M2EtODdhZi00ZTFlLTgwNTAtNGZjNDEyNmJkN2M2IiwiY2xpZW50X2lkIjoiMTU3OTQzMDUxMTkwNyJ9.Ib9c3dluGJLR63tWiJP2E7JBjMwUOLrKfpWr7I9GS6c"
+            )
         )
     }
 
@@ -37,10 +40,10 @@ object RetrofitClient : BaseRetrofitClient() {
         CONTEXT = context
     }
 
-//    override fun baseUrl() = "https://www.unicloud.com"
+    //    override fun baseUrl() = "https://www.unicloud.com"
     override fun baseUrl() = BASE_URL
 
-    override fun isDebug(): Boolean = BuildConfig.DEBUG
+    override fun isDebug(): Boolean = AppUtils.isAppDebug()
 
     override fun handleBuilder(builder: OkHttpClient.Builder) {
     }
@@ -57,7 +60,7 @@ object RetrofitClient : BaseRetrofitClient() {
             .build()
     }
 
-    override fun defaultHeader(): MutableMap<String, String>? {
+    override fun defaultHeader(): ConcurrentHashMap<String, String>? {
         return header
     }
 
