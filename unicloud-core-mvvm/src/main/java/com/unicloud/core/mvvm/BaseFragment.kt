@@ -44,10 +44,10 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), CustomAdapt {
 
     open fun initToolbar() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            StatusBarUtil.setColor(activity!!, Color.parseColor("#000000"))
+            StatusBarUtil.setColor(requireActivity(), Color.parseColor("#000000"))
         } else if (mToolbar != null) {
-            StatusBarUtil.setGradientColor(activity!!, mToolbar)
-            StatusBarUtil.setDarkMode(activity!!)
+            StatusBarUtil.setGradientColor(requireActivity(), mToolbar)
+            StatusBarUtil.setDarkMode(requireActivity())
         }
     }
 
@@ -73,13 +73,13 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), CustomAdapt {
     }
 
     override fun onPause() {
-        if (KeyboardUtils.isSoftInputVisible(activity!!)) KeyboardUtils.hideSoftInput(activity!!)
+        if (KeyboardUtils.isSoftInputVisible(requireActivity())) KeyboardUtils.hideSoftInput(requireActivity())
         super.onPause()
     }
 
     override fun onDetach() {
         dismissLoading()
-        if (KeyboardUtils.isSoftInputVisible(activity!!)) KeyboardUtils.hideSoftInput(activity!!)
+        if (KeyboardUtils.isSoftInputVisible(requireActivity())) KeyboardUtils.hideSoftInput(requireActivity())
         super.onDetach()
 
     }

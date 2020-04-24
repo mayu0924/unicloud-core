@@ -4,10 +4,13 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.view.Menu
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.appcompat.widget.Toolbar
+import androidx.core.text.bold
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import cn.hchstudio.kpermissions.KPermission

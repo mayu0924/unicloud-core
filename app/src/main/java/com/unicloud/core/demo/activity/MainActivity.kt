@@ -1,12 +1,16 @@
 package com.unicloud.core.demo.activity
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.Gravity
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
+import androidx.core.text.backgroundColor
+import androidx.core.text.bold
 import androidx.lifecycle.Observer
 import com.blankj.utilcode.util.ToastUtils
 import com.unicloud.core.demo.R
@@ -25,8 +29,6 @@ class MainActivity : BaseActivity<MainViewModel>() {
     override fun setToolbar(): Toolbar = toolBar
 
     override fun toolbarMenuRes(): Int? = R.menu.menu_main
-
-    val viewModel2 by viewModels<MainViewModel>()
 
     override fun startObserve() {
         viewModel.mArticleListBean.observe(this, Observer {
@@ -52,6 +54,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
                 }
             }
         toolBar.updateTitleCenter()
+        uText2.text = SpannableStringBuilder().append("123").backgroundColor(Color.parseColor("#ff6666"), {}).bold { "2333" }.toString()
 //        uText.filters = arrayOf(InputTextFilter(this, {}))
     }
 

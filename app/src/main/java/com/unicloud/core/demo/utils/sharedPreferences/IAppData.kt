@@ -8,7 +8,7 @@ import com.unicloud.core.demo.model.bean.ArticleBean
  * @author yu.ma
  * @date 2020/4/24 12:04
  */
-interface LocalDataService {
+interface IAppData {
     fun saveArticle(article: ArticleBean)
 
     fun getArticle(): ArticleBean?

@@ -10,7 +10,7 @@ import com.unicloud.core.demo.model.bean.ArticleBean
  * @author yu.ma
  * @date 2020/4/24 12:05
  */
-object AppData : SharedPreferencesHelper(), LocalDataService {
+object AppData : SharedPreferencesHelper(), IAppData {
     override fun saveArticle(article: ArticleBean) {
         sp.edit { putObject<ArticleBean>("article", article) }
     }
