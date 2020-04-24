@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.core.view.widget.XLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.github.core.view.widget.XToolbar
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        app:background_normal="@array/array_bl_tr"
+        app:buttonGravity="center_vertical"
+        app:contentInsetStartWithNavigation="10dp"
+        app:gradient_orientation="LEFT_RIGHT"
+        app:gradient_type="linear"
+        app:navigationIcon="@mipmap/ic_back_white"
+        app:subtitle="@string/app_name"
+        app:subtitleTextColor="#FFFFFF"
+        app:title="UToolbar"
+        app:titleTextColor="#FFFFFF" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <com.github.core.view.widget.XLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:padding="20dp"
+            app:background_normal="#ffffff"
+            app:corner_radius="5dp"
+            app:shadow_color="@color/orange"
+            app:shadow_radius="4dp">
+
+
+            <com.github.core.view.widget.XButton
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:text="RButton"
+                android:textColor="#fff"
+                android:textSize="18dp"
+                app:background_normal="@array/array_l_r"
+                app:corner_radius="10dp"
+                app:gradient_orientation="LEFT_RIGHT"
+                app:gradient_type="linear"
+                app:ripple="true" />
+
+            <com.github.core.view.widget.XTextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:text="RTextView"
+                android:textColor="#fff"
+                android:textSize="18dp"
+                app:background_normal="@array/array_l_r"
+                app:corner_radius="10dp"
+                app:gradient_orientation="LEFT_RIGHT"
+                app:gradient_type="linear"
+                app:ripple="true" />
+
+            <com.github.core.view.widget.XEditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                app:background_normal="@color/colorOrange_light"
+                app:border_color_normal="@color/orange"
+                app:border_dash_gap="5dp"
+                app:border_dash_width="10dp"
+                app:border_width_normal="2dp"
+                app:corner_radius="2dp" />
+
+            <com.github.core.view.widget.XRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:padding="15dp"
+                app:background_normal="@color/orange"
+                app:corner_radius="5dp"
+                app:shadow_color="@color/orange"
+                app:shadow_radius="5dp">
+
+                <com.github.core.view.widget.XImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:border_color="#ffffff"
+                    app:border_width="3dp"
+                    app:corner_radius="8dp"
+                    app:srcCompat="@mipmap/ic_image" />
+
+                <com.github.core.view.widget.XImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_centerInParent="true"
+                    app:border_color="@color/yellow"
+                    app:border_width="3dp"
+                    app:corner_radius_bottom_left="18dp"
+                    app:corner_radius_top_right="18dp"
+                    app:srcCompat="@mipmap/ic_image" />
+
+                <com.github.core.view.widget.XImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentRight="true"
+                    app:border_color="#ffffff"
+                    app:border_width="3dp"
+                    app:is_circle="true"
+                    app:srcCompat="@mipmap/ic_image" />
+            </com.github.core.view.widget.XRelativeLayout>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.github.core.view.widget.XRadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:button="@null"
+                    android:drawablePadding="10dp"
+                    android:text="是"
+                    android:textColor="#333"
+                    android:textSize="18dp"
+                    app:icon_direction="left"
+                    app:icon_height="30dp"
+                    app:icon_src_checked="@mipmap/ic_trace_radio_true"
+                    app:icon_src_normal="@mipmap/ic_trace_radio_false"
+                    app:icon_width="30dp" />
+
+                <com.github.core.view.widget.XRadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="30dp"
+                    android:button="@null"
+                    android:drawablePadding="10dp"
+                    android:text="否"
+                    android:textColor="#333"
+                    android:textSize="18dp"
+                    app:icon_direction="left"
+                    app:icon_height="30dp"
+                    app:icon_src_checked="@mipmap/ic_trace_radio_true"
+                    app:icon_src_normal="@mipmap/ic_trace_radio_false"
+                    app:icon_width="30dp" />
+            </RadioGroup>
+
+            <com.github.core.view.widget.XCheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:button="@null"
+                android:drawablePadding="10dp"
+                android:text="是否已确认？"
+                android:textColor="#333"
+                android:textSize="18dp"
+                app:icon_direction="left"
+                app:icon_height="30dp"
+                app:icon_src_checked="@mipmap/ic_check_true"
+                app:icon_src_normal="@mipmap/ic_check_false"
+                app:icon_width="30dp" />
+
+            <com.github.core.view.widget.XView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                app:background_normal="@array/array_bl_tr"
+                app:corner_radius="8dp"
+                app:gradient_orientation="RIGHT_LEFT"
+                app:gradient_type="linear"
+                app:ripple="true"
+                app:ripple_mask_style="normal" />
+
+
+            <com.github.core.view.widget.XConstraintLayout
+                android:id="@+id/rcl"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                app:background_normal="@array/array_bl_tr"
+                app:corner_radius="8dp"
+                app:gradient_orientation="LEFT_RIGHT"
+                app:gradient_type="linear"
+                app:ripple="true"
+                app:ripple_mask_style="normal"
+                app:shadow_color="@color/colorRed"
+                app:shadow_radius="8dp" />
+
+        </com.github.core.view.widget.XLinearLayout>
+    </ScrollView>
+</com.github.core.view.widget.XLinearLayout>

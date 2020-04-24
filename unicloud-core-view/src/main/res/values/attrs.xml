@@ -1,89 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="UNIButton">
-        <!--    true:AppcompatButton||false:UNIButton    -->
-        <attr name="uni_btn_original" format="boolean" />
-        <attr name="uni_btn_isHole" format="boolean" />
-        <attr name="uni_btn_strokeWidth" format="dimension" />
-        <attr name="uni_btn_corner_radius" format="dimension" />
-        <attr name="uni_btn_corner_radius_tl" format="dimension" />
-        <attr name="uni_btn_corner_radius_tr" format="dimension" />
-        <attr name="uni_btn_corner_radius_bl" format="dimension" />
-        <attr name="uni_btn_corner_radius_br" format="dimension" />
-        <attr name="uni_btn_start_color" format="reference" />
-        <attr name="uni_btn_end_color" format="reference" />
-        <attr name="uni_btn_gradient_orientation" format="enum">
-            <enum name="LEFT_RIGHT" value="0" />
-            <enum name="BL_TR" value="45" />
-            <enum name="BOTTOM_TOP" value="90" />
-            <enum name="BR_TL" value="135" />
-            <enum name="RIGHT_LEFT" value="180" />
-            <enum name="TR_BL" value="225" />
-            <enum name="TOP_BOTTOM" value="270" />
-            <enum name="TL_BR" value="315" />
-        </attr>
-    </declare-styleable>
-
-    <declare-styleable name="UNIText">
-        <!--    true:AppcompatText||false:UNIText    -->
-        <attr name="uni_text_original" format="boolean" />
-        <attr name="uni_text_isHole" format="boolean" />
-        <attr name="uni_text_strokeWidth" format="dimension" />
-        <attr name="uni_text_corner_radius" format="dimension" />
-        <attr name="uni_text_corner_radius_tl" format="dimension" />
-        <attr name="uni_text_corner_radius_tr" format="dimension" />
-        <attr name="uni_text_corner_radius_bl" format="dimension" />
-        <attr name="uni_text_corner_radius_br" format="dimension" />
-        <attr name="uni_text_start_color" format="reference" />
-        <attr name="uni_text_end_color" format="reference" />
-        <attr name="uni_text_gradient_orientation" format="enum">
-            <enum name="LEFT_RIGHT" value="0" />
-            <enum name="BL_TR" value="45" />
-            <enum name="BOTTOM_TOP" value="90" />
-            <enum name="BR_TL" value="135" />
-            <enum name="RIGHT_LEFT" value="180" />
-            <enum name="TR_BL" value="225" />
-            <enum name="TOP_BOTTOM" value="270" />
-            <enum name="TL_BR" value="315" />
-        </attr>
-    </declare-styleable>
-
-    <declare-styleable name="UNIDrawableText">
-        <attr name="uni_drawable_mode" format="enum">
-            <enum name="IMAGE" value="0" />
-            <enum name="OVAL" value="1" />
-            <enum name="RECT" value="2" />
-        </attr>
-        <attr name="uni_drawable_src" format="reference" />
-        <attr name="uni_drawable_height" format="dimension" />
-        <attr name="uni_drawable_width" format="dimension" />
-        <attr name="uni_drawable_isIntercept" format="boolean" />
-        <attr name="uni_drawable_location">
-            <enum name="left" value="1" />
-            <enum name="top" value="2" />
-            <enum name="right" value="3" />
-            <enum name="bottom" value="4" />
-        </attr>
-    </declare-styleable>
-
-    <declare-styleable name="UNIImageView">
-        <attr name="uni_image_is_circle" format="boolean" />
-        <attr name="uni_image_is_cover_src" format="boolean" />
-        <attr name="uni_image_corner_radius" format="dimension" />
-        <attr name="uni_image_corner_top_left_radius" format="dimension" />
-        <attr name="uni_image_corner_top_right_radius" format="dimension" />
-        <attr name="uni_image_corner_bottom_left_radius" format="dimension" />
-        <attr name="uni_image_corner_bottom_right_radius" format="dimension" />
-        <attr name="uni_image_border_width" format="dimension" />
-        <attr name="uni_image_border_color" format="color" />
-        <attr name="uni_image_inner_border_width" format="dimension" />
-        <attr name="uni_image_inner_border_color" format="color" />
-        <attr name="uni_image_mask_color" format="color" />
+    <declare-styleable name="AvatarView">
+        <attr name="avatar_is_circle" format="boolean" />
+        <attr name="avatar_is_cover_src" format="boolean" />
+        <attr name="avatar_corner_radius" format="dimension" />
+        <attr name="avatar_corner_top_left_radius" format="dimension" />
+        <attr name="avatar_corner_top_right_radius" format="dimension" />
+        <attr name="avatar_corner_bottom_left_radius" format="dimension" />
+        <attr name="avatar_corner_bottom_right_radius" format="dimension" />
+        <attr name="avatar_border_width" format="dimension" />
+        <attr name="avatar_border_color" format="color" />
+        <attr name="avatar_inner_border_width" format="dimension" />
+        <attr name="avatar_inner_border_color" format="color" />
+        <attr name="avatar_mask_color" format="color" />
     </declare-styleable>
 
     <!--    =====================================================================================    -->
 
-    !--基础通用属性-->
+    <!--基础通用属性-->
 
     <!--四周圆角度、左上、右上、左下、右下-->
     <attr name="corner_radius" format="dimension" />
@@ -252,7 +186,7 @@
     </declare-styleable>
 
     <!-- TextView -->
-    <declare-styleable name="UTextView">
+    <declare-styleable name="XTextView">
 
         <!--四周圆角度、左上、右上、左下、右下-->
         <attr name="corner_radius" />
@@ -330,7 +264,7 @@
     </declare-styleable>
 
     <!-- REditText -->
-    <declare-styleable name="UEditText">
+    <declare-styleable name="XEditText">
 
         <!--四周圆角度、左上、右上、左下、右下-->
         <attr name="corner_radius" />
@@ -408,7 +342,7 @@
     </declare-styleable>
 
     <!-- ImageView -->
-    <declare-styleable name="UImageView">
+    <declare-styleable name="XImageView">
         <!--四周圆角度、左上、右上、左下、右下-->
         <attr name="corner_radius" />
         <attr name="corner_radius_top_left" />
@@ -425,7 +359,7 @@
     </declare-styleable>
 
     <!-- RLinearLayout -->
-    <declare-styleable name="ULinearLayout">
+    <declare-styleable name="XLinearLayout">
 
         <!--四周圆角度、左上、右上、左下、右下-->
         <attr name="corner_radius" />
@@ -480,7 +414,7 @@
     </declare-styleable>
 
     <!-- RRelativeLayout -->
-    <declare-styleable name="URelativeLayout">
+    <declare-styleable name="XRelativeLayout">
 
         <!--四周圆角度、左上、右上、左下、右下-->
         <attr name="corner_radius" />
@@ -535,7 +469,7 @@
     </declare-styleable>
 
     <!-- RFrameLayout -->
-    <declare-styleable name="UFrameLayout">
+    <declare-styleable name="XFrameLayout">
 
         <!--四周圆角度、左上、右上、左下、右下-->
         <attr name="corner_radius" />
@@ -590,7 +524,7 @@
     </declare-styleable>
 
     <!-- RConstraintLayout -->
-    <declare-styleable name="UConstraintLayout">
+    <declare-styleable name="XConstraintLayout">
 
         <!--四周圆角度、左上、右上、左下、右下-->
         <attr name="corner_radius" />
@@ -645,7 +579,7 @@
     </declare-styleable>
 
     <!-- RView -->
-    <declare-styleable name="UView">
+    <declare-styleable name="XView">
 
         <!--四周圆角度、左上、右上、左下、右下-->
         <attr name="corner_radius" />
@@ -700,7 +634,7 @@
     </declare-styleable>
 
     <!-- RRadioButton -->
-    <declare-styleable name="URadioButton">
+    <declare-styleable name="XRadioButton">
 
         <!--四周圆角度、左上、右上、左下、右下-->
         <attr name="corner_radius" />
@@ -783,7 +717,7 @@
     </declare-styleable>
 
     <!-- RRadioButton -->
-    <declare-styleable name="UToolbar">
+    <declare-styleable name="XToolbar">
 
         <!--四周圆角度、左上、右上、左下、右下-->
         <attr name="centerTitle" format="boolean" />
@@ -791,7 +725,7 @@
     </declare-styleable>
 
     <!-- RCheckBox -->
-    <declare-styleable name="UCheckBox">
+    <declare-styleable name="XCheckBox">
 
         <!--四周圆角度、左上、右上、左下、右下-->
         <attr name="corner_radius" />

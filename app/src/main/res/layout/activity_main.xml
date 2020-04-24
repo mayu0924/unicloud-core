@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.unicloud.core.widget.ULinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.github.core.view.widget.XLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,15 +7,15 @@
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
-    <com.unicloud.core.widget.UToolbar
+    <com.github.core.view.widget.XToolbar
         android:id="@+id/toolBar"
         style="@style/ToolBar.Home"
         app:centerTitle="true"
         app:menu="@menu/menu_main"
         app:subtitle=""
-        app:title="这是一个居中的标题啊啊啊" />
+        app:title="标题" />
 
-    <com.unicloud.core.widget.UTextView
+    <com.github.core.view.widget.XTextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
@@ -29,56 +29,7 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <com.unicloud.core.view.button.UNIButton
-            android:id="@+id/uniBtn"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:text="UNIButton"
-            android:textColor="#FFFFFF"
-            app:uni_btn_corner_radius="10dp"
-            app:uni_btn_end_color="@color/colorPrimary"
-            app:uni_btn_isHole="false"
-            app:uni_btn_start_color="@color/colorAccent" />
-
-        <com.unicloud.core.view.button.UNIButton
-            android:id="@+id/uniText"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:text="UNIText"
-            android:textColor="#FFFFFF"
-            app:uni_btn_corner_radius="10dp"
-            app:uni_btn_end_color="@color/colorRed"
-            app:uni_btn_isHole="false"
-            app:uni_btn_start_color="@color/colorRed_light" />
-
-        <com.unicloud.core.view.button.UNIButton
-            android:id="@+id/uniDrawableText"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:text="UNIDrawableText"
-            android:textColor="#FFFFFF"
-            app:uni_btn_corner_radius="10dp"
-            app:uni_btn_end_color="@color/colorRed"
-            app:uni_btn_isHole="false"
-            app:uni_btn_start_color="@color/colorPrimaryDark" />
-
-        <com.unicloud.core.view.button.UNIButton
-            android:id="@+id/uniImageView"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:text="UNIImageView"
-            android:textColor="#FFFFFF"
-            app:uni_btn_corner_radius="10dp"
-            app:uni_btn_end_color="@color/colorAccent"
-            app:uni_btn_isHole="false"
-            app:uni_btn_start_color="@color/colorPrimaryDark" />
-
-
-        <com.unicloud.core.widget.UButton
+        <com.github.core.view.widget.XButton
             android:id="@+id/rButton"
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -93,7 +44,7 @@
             app:gradient_type="linear"
             app:ripple="true" />
 
-        <com.unicloud.core.widget.UButton
+        <com.github.core.view.widget.XButton
             android:id="@+id/request"
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -108,7 +59,7 @@
             app:gradient_type="linear"
             app:ripple="true" />
 
-        <com.unicloud.core.widget.UButton
+        <com.github.core.view.widget.XButton
             android:id="@+id/requestRepeat"
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -122,7 +73,7 @@
             app:gradient_orientation="LEFT_RIGHT"
             app:gradient_type="linear"
             app:ripple="true" />
-        <com.unicloud.core.widget.UEditText
+        <com.github.core.view.widget.XEditText
             android:id="@+id/uText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -136,5 +87,5 @@
             android:gravity="center"
             android:textColor="@color/red"/>
     </LinearLayout>
-</com.unicloud.core.widget.ULinearLayout>
+</com.github.core.view.widget.XLinearLayout>
 

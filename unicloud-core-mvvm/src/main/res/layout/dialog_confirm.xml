@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.unicloud.core.widget.ULinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.github.core.view.widget.XLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,7 +9,7 @@
     app:background_normal="@android:color/white"
     app:corner_radius="8dp">
 
-    <com.unicloud.core.widget.UTextView
+    <com.github.core.view.widget.XTextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,4 +70,4 @@
             android:textSize="15dp" />
     </LinearLayout>
 
-</com.unicloud.core.widget.ULinearLayout>
+</com.github.core.view.widget.XLinearLayout>

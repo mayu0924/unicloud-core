@@ -5,15 +5,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import com.blankj.utilcode.util.ToastUtils
 import com.unicloud.core.demo.R
 import com.unicloud.core.demo.activity.vm.MainViewModel
+import com.unicloud.core.demo.utils.sharedPreferences.AppData
 import com.unicloud.core.mvvm.BaseActivity
 import com.unicloud.core.mvvm.event.Message
 import com.unicloud.core.mvvm.utils.StatusBarUtil
-import com.unicloud.core.utils.filter.InputTextFilter
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -25,9 +26,12 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
     override fun toolbarMenuRes(): Int? = R.menu.menu_main
 
+    val viewModel2 by viewModels<MainViewModel>()
+
     override fun startObserve() {
         viewModel.mArticleListBean.observe(this, Observer {
             uText.setText(it.datas[0].title)
+            AppData.saveArticle(it.datas[0])
         })
     }
 
@@ -83,18 +87,18 @@ class MainActivity : BaseActivity<MainViewModel>() {
 //            viewModel.upload()
 //        }
 
-        uniBtn.setOnClickListener {
-            startActivity(Intent(this, UNIButtonActivity::class.java))
-        }
-        uniText.setOnClickListener {
-            startActivity(Intent(this, UNITextActivity::class.java))
-        }
-        uniDrawableText.setOnClickListener {
-            startActivity(Intent(this, UNIDrawableTextActivity::class.java))
-        }
-        uniImageView.setOnClickListener {
-            startActivity(Intent(this, UNIImageActivity::class.java))
-        }
+//        uniBtn.setOnClickListener {
+//            startActivity(Intent(this, UNIButtonActivity::class.java))
+//        }
+//        uniText.setOnClickListener {
+//            startActivity(Intent(this, UNITextActivity::class.java))
+//        }
+//        uniDrawableText.setOnClickListener {
+//            startActivity(Intent(this, UNIDrawableTextActivity::class.java))
+//        }
+//        uniImageView.setOnClickListener {
+//            startActivity(Intent(this, UNIImageActivity::class.java))
+//        }
         rButton.setOnClickListener {
             startActivity(Intent(this, RWidgetActivity::class.java))
         }
@@ -102,8 +106,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
             viewModel.getHomeArticles()
         }
         requestRepeat.setOnClickListener {
-            viewModel.getHomeArticles()
-            viewModel.getHomeArticles()
+            uText.setText(AppData.getArticle()?.title?:"什么都没有")
         }
     }
 

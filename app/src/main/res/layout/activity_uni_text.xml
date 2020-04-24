@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.unicloud.core.widget.ULinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.github.core.view.widget.XLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.unicloud.core.widget.UToolbar
+    <com.github.core.view.widget.XToolbar
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         app:background_normal="@array/array_bl_tr"
@@ -32,128 +32,6 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <com.unicloud.core.view.text.UNIText
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="UNIText"
-                android:textColor="@color/colorPrimary"
-                app:uni_text_original="true" />
-
-            <com.unicloud.core.view.text.UNIText
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="UNIText"
-                android:textColor="@color/colorPrimary"
-                app:uni_text_corner_radius="22.5dp"
-                app:uni_text_end_color="@color/colorPrimary"
-                app:uni_text_isHole="true"
-                app:uni_text_start_color="@color/colorAccent" />
-
-            <com.unicloud.core.view.text.UNIText
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="UNIText"
-                android:textColor="@color/colorPrimary"
-                app:uni_text_corner_radius_bl="10dp"
-                app:uni_text_corner_radius_br="10dp"
-                app:uni_text_corner_radius_tl="10dp"
-                app:uni_text_corner_radius_tr="10dp"
-                app:uni_text_end_color="@color/colorPrimary"
-                app:uni_text_isHole="true"
-                app:uni_text_start_color="@color/colorAccent"
-                app:uni_text_strokeWidth="1.5dp" />
-
-            <com.unicloud.core.view.text.UNIText
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="UNIText"
-                android:textColor="#FFFFFF"
-                app:uni_text_corner_radius="22.5dp"
-                app:uni_text_end_color="@color/colorPrimary"
-                app:uni_text_isHole="false"
-                app:uni_text_start_color="@color/colorAccent" />
-
-            <com.unicloud.core.view.text.UNIText
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="UNIText"
-                android:textColor="#FFFFFF"
-                app:uni_text_corner_radius_bl="0dp"
-                app:uni_text_corner_radius_br="0dp"
-                app:uni_text_corner_radius_tl="10dp"
-                app:uni_text_corner_radius_tr="10dp"
-                app:uni_text_end_color="@color/colorPrimary"
-                app:uni_text_isHole="false"
-                app:uni_text_start_color="@color/colorAccent" />
-
-            <com.unicloud.core.view.text.UNIText
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="UNIText"
-                android:textColor="#FFFFFF"
-                app:uni_text_corner_radius_bl="0dp"
-                app:uni_text_corner_radius_br="10dp"
-                app:uni_text_corner_radius_tl="0dp"
-                app:uni_text_corner_radius_tr="10dp"
-                app:uni_text_end_color="@color/colorPrimary"
-                app:uni_text_isHole="false"
-                app:uni_text_start_color="@color/colorAccent" />
-
-            <com.unicloud.core.view.text.UNIText
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="UNIText"
-                android:textColor="#FFFFFF"
-                app:uni_text_corner_radius_bl="10dp"
-                app:uni_text_corner_radius_br="10dp"
-                app:uni_text_corner_radius_tl="0dp"
-                app:uni_text_corner_radius_tr="0dp"
-                app:uni_text_end_color="@color/colorPrimary"
-                app:uni_text_isHole="false"
-                app:uni_text_start_color="@color/colorAccent" />
-
-            <com.unicloud.core.view.text.UNIText
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="UNIText"
-                android:textColor="#FFFFFF"
-                app:uni_text_corner_radius_bl="10dp"
-                app:uni_text_corner_radius_br="0dp"
-                app:uni_text_corner_radius_tl="10dp"
-                app:uni_text_corner_radius_tr="0dp"
-                app:uni_text_end_color="@color/colorPrimary"
-                app:uni_text_isHole="false"
-                app:uni_text_start_color="@color/colorAccent" />
-
-            <com.unicloud.core.view.text.UNIText
-                android:id="@+id/uniText"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="UNIText_RIGHT_LEFT"
-                android:textColor="#FFFFFF"
-                app:uni_text_corner_radius="10dp"
-                app:uni_text_end_color="@color/colorPrimary"
-                app:uni_text_gradient_orientation="RIGHT_LEFT"
-                app:uni_text_isHole="false"
-                app:uni_text_start_color="@color/colorAccent" />
         </LinearLayout>
     </ScrollView>
-</com.unicloud.core.widget.ULinearLayout>
+</com.github.core.view.widget.XLinearLayout>

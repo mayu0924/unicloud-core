@@ -20,13 +20,12 @@ import com.unicloud.core.mvvm.event.Message
 import com.unicloud.core.mvvm.utils.NetworkManager
 import com.unicloud.core.mvvm.utils.SoftKeyBoardListener
 import com.unicloud.core.mvvm.utils.StatusBarUtil
-import com.unicloud.core.utils.filter.InputEmojiFilter
 import me.jessyan.autosize.internal.CustomAdapt
 import java.lang.reflect.Method
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAdapt,
-        NetworkManager.OnNetworkChangedListener {
+    NetworkManager.OnNetworkChangedListener {
     var isNetAvailable = true
 
     private var mLoadingDialog: BaseDialog? = null
@@ -35,7 +34,16 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAda
 
     lateinit var mKPermission: KPermission
 
-    lateinit var viewModel: VM
+    @Suppress("UNCHECKED_CAST")
+    val viewModel by lazy {
+        val type = javaClass.genericSuperclass
+        val tClass = if (type is ParameterizedType) {
+            type.actualTypeArguments[0] as? Class<VM> ?: BaseViewModel::class.java
+        } else {
+            BaseViewModel::class.java
+        }
+        ViewModelProvider(this, ViewModelFactory()).get(tClass) as VM
+    }
 
     override fun isBaseOnWidth(): Boolean = true
 
@@ -72,7 +80,7 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAda
         }
 
         SoftKeyBoardListener.setListener(this, object :
-                SoftKeyBoardListener.OnSoftKeyBoardChangeListener {
+            SoftKeyBoardListener.OnSoftKeyBoardChangeListener {
             override fun keyBoardShow(height: Int) {
                 onSoftInputHeightChanged(height, true)
             }
@@ -86,7 +94,6 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAda
             mNetworkManager?.register(this)
         }
 
-        createViewModel()
         startObserve()
         lifecycle.addObserver(viewModel)
         //注册 UI事件
@@ -146,9 +153,9 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAda
     }
 
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
     ) {
         mKPermission.onRequestPermissionsResult(requestCode, permissions, grantResults)
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -171,7 +178,7 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAda
             } else { //sdk版本24的以下，需要通过反射去执行该方法
                 try {
                     val m: Method = menu.javaClass
-                            .getDeclaredMethod("setOptionalIconsVisible", java.lang.Boolean.TYPE)
+                        .getDeclaredMethod("setOptionalIconsVisible", java.lang.Boolean.TYPE)
                     m.isAccessible = true
                     m.invoke(menu, true)
                 } catch (e: Exception) {
@@ -218,19 +225,4 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAda
     private fun dismissLoading() {
         mLoadingDialog?.dismiss()
     }
-
-
-    /**
-     * 创建 ViewModel
-     */
-    @Suppress("UNCHECKED_CAST")
-    private fun createViewModel() {
-        val type = javaClass.genericSuperclass
-        if (type is ParameterizedType) {
-            val tp = type.actualTypeArguments[0]
-            val tClass = tp as? Class<VM> ?: BaseViewModel::class.java
-            viewModel = ViewModelProvider(this, ViewModelFactory()).get(tClass) as VM
-        }
-    }
-
 }
