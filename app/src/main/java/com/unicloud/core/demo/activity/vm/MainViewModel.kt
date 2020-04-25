@@ -1,9 +1,14 @@
 package com.unicloud.core.demo.activity.vm
 
 import android.os.Environment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ToastUtils
+import com.unicloud.core.demo.db.DemoDataBase
+import com.unicloud.core.demo.db.UserEntity
+import com.unicloud.core.demo.db.repository.UserRepository
 import com.unicloud.core.demo.model.bean.ArticleListBean
 import com.unicloud.core.demo.model.repository.MainRepository
 import com.unicloud.core.demo.net.RetrofitClient
@@ -11,6 +16,8 @@ import com.unicloud.core.mvvm.BaseViewModel
 import com.unicloud.core.mvvm.event.Message
 import com.unicloud.core.mvvm.net.upload.ProgressListener
 import com.unicloud.core.mvvm.net.upload.UploadFileRequestBody
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -20,7 +27,30 @@ import java.io.File
 
 class MainViewModel : BaseViewModel() {
     private val mainRespository by lazy { MainRepository() }
+
+    private val userDao by lazy { DemoDataBase.getDatabase(getApplication()).userDao() }
+
+    private val userRepository by lazy { UserRepository(userDao) }
+
+    var allUser: LiveData<List<UserEntity>> = MutableLiveData<List<UserEntity>>()
+
+    val user = MutableLiveData<List<UserEntity>>()
+
     val mArticleListBean: MutableLiveData<ArticleListBean> = MutableLiveData()
+
+    fun insert() = viewModelScope.launch(Dispatchers.IO) {
+        userRepository.insert(UserEntity(0, "mayu", "male"))
+        userRepository.insert(UserEntity(0, "xufang", "famale"))
+    }
+
+    fun queryAllUser() {
+        val allUser = userRepository.queryAll()
+        LogUtils.d(allUser.value.toString())
+    }
+
+    fun deleteAll() = viewModelScope.launch(Dispatchers.IO){
+        userRepository.deleteAll()
+    }
 
     fun getHomeArticles() {
         launchOnlyresult({
@@ -44,7 +74,7 @@ class MainViewModel : BaseViewModel() {
             LogUtils.dTag("download", "curr:$curr,  total:$total")
         }, { file ->
             LogUtils.dTag("download", "newFile:${file.absolutePath}")
-        }, {errMsg ->
+        }, { errMsg ->
             ToastUtils.showShort(errMsg)
         })
     }
@@ -54,11 +84,19 @@ class MainViewModel : BaseViewModel() {
             "http://hd215.api.yesapi.cn/?s=App.CDN.UploadImg&app_key=B78EEC920E196C11F4FA1B6765BD5035&sign=BDD0E0926C0B27C0D10B9B8474BF970D"
         val filePart = MultipartBody.Part.createFormData(
             "file", "a.jpg",
-            UploadFileRequestBody(RequestBody.create(MediaType.parse("application/octet-stream"), File.createTempFile("abc", "txt")), object : ProgressListener{
-                override fun onProgress(hasWrittenLen: Long, totalLen: Long, hasFinish: Boolean) {
+            UploadFileRequestBody(
+                RequestBody.create(
+                    MediaType.parse("application/octet-stream"),
+                    File.createTempFile("abc", "txt")
+                ), object : ProgressListener {
+                    override fun onProgress(
+                        hasWrittenLen: Long,
+                        totalLen: Long,
+                        hasFinish: Boolean
+                    ) {
 
-                }
-            })// image/jpg  application/octet-stream   multipart/form-data;charset=UTF-8
+                    }
+                })// image/jpg  application/octet-stream   multipart/form-data;charset=UTF-8
         )
         val call = RetrofitClient.baseService.uploadFile(
             RetrofitUrlManager.getInstance().setUrlNotChange(url), filePart

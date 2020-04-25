@@ -12,6 +12,7 @@ import androidx.core.text.backgroundColor
 import androidx.core.text.bold
 import androidx.lifecycle.Observer
 import com.blankj.utilcode.util.ToastUtils
+import com.orhanobut.logger.Logger
 import com.unicloud.core.demo.R
 import com.unicloud.core.demo.activity.vm.MainViewModel
 import com.unicloud.core.demo.utils.sharedPreferences.AppData
@@ -33,6 +34,10 @@ class MainActivity : BaseActivity<MainViewModel>() {
         viewModel.mArticleListBean.observe(this, Observer {
             uText.setText(it.datas[0].title)
             AppData.saveArticle(it.datas[0])
+        })
+
+        viewModel.allUser.observe(this, Observer {
+            Logger.d(it.toString())
         })
     }
 
@@ -112,6 +117,15 @@ class MainActivity : BaseActivity<MainViewModel>() {
         }
         motionButton.setOnClickListener {
             startActivity(Intent(this, MotionActivity::class.java))
+        }
+        insert.setOnClickListener {
+            viewModel.insert()
+        }
+        queryAll.setOnClickListener {
+            viewModel.queryAllUser()
+        }
+        deleteAll.setOnClickListener {
+            viewModel.deleteAll()
         }
     }
 

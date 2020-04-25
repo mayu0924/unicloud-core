@@ -116,6 +116,51 @@
             android:text="@string/app_name"
             android:gravity="center"
             android:textColor="@color/red"/>
+
+        <com.github.core.view.widget.XButton
+            android:id="@+id/insert"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="insert"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            app:background_normal="@array/array_l_r"
+            app:corner_radius="10dp"
+            app:gradient_orientation="LEFT_RIGHT"
+            app:gradient_type="linear"
+            app:ripple="true" />
+
+        <com.github.core.view.widget.XButton
+            android:id="@+id/queryAll"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="queryAll"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            app:background_normal="@array/array_l_r"
+            app:corner_radius="10dp"
+            app:gradient_orientation="LEFT_RIGHT"
+            app:gradient_type="linear"
+            app:ripple="true" />
+
+        <com.github.core.view.widget.XButton
+            android:id="@+id/deleteAll"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="deleteAll"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            app:background_normal="@array/array_l_r"
+            app:corner_radius="10dp"
+            app:gradient_orientation="LEFT_RIGHT"
+            app:gradient_type="linear"
+            app:ripple="true" />
     </LinearLayout>
 </com.github.core.view.widget.XLinearLayout>
 
