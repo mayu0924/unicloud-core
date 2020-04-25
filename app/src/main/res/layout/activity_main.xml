@@ -73,6 +73,22 @@
             app:gradient_orientation="LEFT_RIGHT"
             app:gradient_type="linear"
             app:ripple="true" />
+
+        <com.github.core.view.widget.XButton
+            android:id="@+id/motionButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="motionButton"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            app:background_normal="@array/array_l_r"
+            app:corner_radius="10dp"
+            app:gradient_orientation="LEFT_RIGHT"
+            app:gradient_type="linear"
+            app:ripple="true" />
+
         <com.github.core.view.widget.XEditText
             android:id="@+id/uText"
             android:layout_width="match_parent"

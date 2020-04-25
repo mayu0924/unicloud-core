@@ -27,11 +27,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.UNIButtonActivity" />
-        <activity android:name=".activity.UNITextActivity" />
-        <activity android:name=".activity.UNIDrawableTextActivity" />
-        <activity android:name=".activity.UNIImageActivity" />
         <activity android:name=".activity.RWidgetActivity" />
+        <activity android:name=".activity.MotionActivity" />
     </application>
 
 </manifest>

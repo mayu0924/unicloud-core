@@ -7,7 +7,6 @@ import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.Gravity
 import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import androidx.core.text.backgroundColor
 import androidx.core.text.bold
@@ -110,6 +109,9 @@ class MainActivity : BaseActivity<MainViewModel>() {
         }
         requestRepeat.setOnClickListener {
             uText.setText(AppData.getArticle()?.title?:"什么都没有")
+        }
+        motionButton.setOnClickListener {
+            startActivity(Intent(this, MotionActivity::class.java))
         }
     }
 
