@@ -13,8 +13,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/unicloud-core-mvvm" />
-            <option value="$PROJECT_DIR$/unicloud-core-view" />
+            <option value="$PROJECT_DIR$/libs" />
+            <option value="$PROJECT_DIR$/libs/unicloud-core-mvvm" />
+            <option value="$PROJECT_DIR$/libs/unicloud-core-view" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

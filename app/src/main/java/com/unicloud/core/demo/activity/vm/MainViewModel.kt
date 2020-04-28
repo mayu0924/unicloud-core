@@ -1,14 +1,19 @@
 package com.unicloud.core.demo.activity.vm
 
+import android.app.Activity
 import android.os.Environment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ToastUtils
-import com.unicloud.core.demo.db.DemoDataBase
+import com.blankj.utilcode.util.Utils
+import com.unicloud.core.demo.app.MApplication
+import com.unicloud.core.demo.db.AppDataBase
 import com.unicloud.core.demo.db.UserEntity
 import com.unicloud.core.demo.db.repository.UserRepository
+import com.unicloud.core.demo.di.AppManager
 import com.unicloud.core.demo.model.bean.ArticleListBean
 import com.unicloud.core.demo.model.repository.MainRepository
 import com.unicloud.core.demo.net.RetrofitClient
@@ -18,6 +23,7 @@ import com.unicloud.core.mvvm.net.upload.ProgressListener
 import com.unicloud.core.mvvm.net.upload.UploadFileRequestBody
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -28,7 +34,8 @@ import java.io.File
 class MainViewModel : BaseViewModel() {
     private val mainRespository by lazy { MainRepository() }
 
-    private val userDao by lazy { DemoDataBase.getDatabase(getApplication()).userDao() }
+    //    private val userDao by lazy { AppDataBase.getDatabase(getApplication()).userDao() }
+    private val userDao by lazy { AppManager.dbManager().userDao() }
 
     private val userRepository by lazy { UserRepository(userDao) }
 
@@ -44,11 +51,17 @@ class MainViewModel : BaseViewModel() {
     }
 
     fun queryAllUser() {
-        val allUser = userRepository.queryAll()
-        LogUtils.d(allUser.value.toString())
+//        launchUI {
+//            withContext(Dispatchers.IO){
+//                allUser = userRepository.queryAll()
+//            }
+//            LogUtils.d(allUser.value.toString())
+//        }
     }
 
-    fun deleteAll() = viewModelScope.launch(Dispatchers.IO){
+    fun queryAllUsers() = userRepository.queryAll()
+
+    fun deleteAll() = viewModelScope.launch(Dispatchers.IO) {
         userRepository.deleteAll()
     }
 

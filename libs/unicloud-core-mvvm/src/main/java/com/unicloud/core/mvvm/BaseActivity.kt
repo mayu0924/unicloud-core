@@ -48,6 +48,8 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAda
         ViewModelProvider(this, ViewModelFactory()).get(tClass) as VM
     }
 
+    val viewModel2 by viewModels<BaseViewModel>()
+
     override fun isBaseOnWidth(): Boolean = true
 
     override fun getSizeInDp(): Float = 360f

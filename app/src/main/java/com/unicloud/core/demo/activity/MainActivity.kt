@@ -11,11 +11,12 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.text.backgroundColor
 import androidx.core.text.bold
 import androidx.lifecycle.Observer
+import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.orhanobut.logger.Logger
 import com.unicloud.core.demo.R
 import com.unicloud.core.demo.activity.vm.MainViewModel
-import com.unicloud.core.demo.utils.sharedPreferences.AppData
+import com.unicloud.core.demo.di.AppManager
 import com.unicloud.core.mvvm.BaseActivity
 import com.unicloud.core.mvvm.event.Message
 import com.unicloud.core.mvvm.utils.StatusBarUtil
@@ -33,11 +34,11 @@ class MainActivity : BaseActivity<MainViewModel>() {
     override fun startObserve() {
         viewModel.mArticleListBean.observe(this, Observer {
             uText.setText(it.datas[0].title)
-            AppData.saveArticle(it.datas[0])
+            AppManager.dataManager().saveArticle(it.datas[0])
         })
 
         viewModel.allUser.observe(this, Observer {
-            Logger.d(it.toString())
+            Logger.d(it.size)
         })
     }
 
@@ -58,7 +59,9 @@ class MainActivity : BaseActivity<MainViewModel>() {
                 }
             }
         toolBar.updateTitleCenter()
-        uText2.text = SpannableStringBuilder().append("123").backgroundColor(Color.parseColor("#ff6666"), {}).bold { "2333" }.toString()
+        uText2.text =
+            SpannableStringBuilder().append("123").backgroundColor(Color.parseColor("#ff6666"), {})
+                .bold { "2333" }.toString()
 //        uText.filters = arrayOf(InputTextFilter(this, {}))
     }
 
@@ -113,7 +116,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
             viewModel.getHomeArticles()
         }
         requestRepeat.setOnClickListener {
-            uText.setText(AppData.getArticle()?.title?:"什么都没有")
+            uText.setText(AppManager.dataManager().getArticle()?.title ?: "什么都没有")
         }
         motionButton.setOnClickListener {
             startActivity(Intent(this, MotionActivity::class.java))
@@ -122,7 +125,10 @@ class MainActivity : BaseActivity<MainViewModel>() {
             viewModel.insert()
         }
         queryAll.setOnClickListener {
-            viewModel.queryAllUser()
+//            viewModel.queryAllUser()
+            viewModel.queryAllUsers().observe(this, Observer {
+                LogUtils.d(it.toString())
+            })
         }
         deleteAll.setOnClickListener {
             viewModel.deleteAll()

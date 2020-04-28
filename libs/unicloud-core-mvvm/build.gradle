@@ -81,7 +81,7 @@ dependencies {
     api 'cn.hchstudio:kpermissions:1.0.9'
 
 //    api 'com.mayu.core:ui:0.1.7'
-    api project(path: ':unicloud-core-view')
+    api project(path: ':libs:unicloud-core-view')
 }
 
 // 新增

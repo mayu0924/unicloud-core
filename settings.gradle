@@ -1,2 +1,2 @@
-include ':unicloud-core-mvvm', ':unicloud-core-view'
+include ':libs:unicloud-core-mvvm', ':libs:unicloud-core-view'
 include ':app'

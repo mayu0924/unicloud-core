@@ -71,10 +71,17 @@ dependencies {
     implementation 'com.facebook.stetho:stetho:1.5.1'
     androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
 
+    api 'com.google.dagger:dagger:2.27'
+    kapt 'com.google.dagger:dagger-compiler:2.27'
+
+//    api 'com.google.dagger:dagger-android:2.27'
+//    api 'com.google.dagger:dagger-android-support:2.27' // if you use the support libraries
+//    annotationProcessor 'com.google.dagger:dagger-android-processor:2.27'
+
 
 //    implementation 'me.jessyan:autosize:1.1.2'
 
-    implementation project(path: ':unicloud-core-mvvm')
+    implementation project(path: ':libs:unicloud-core-mvvm')
 //    implementation project(path: ':unicloud-core-view')
 
 //    releaseImplementation 'com.mayu.core:mvvm:0.3.0'

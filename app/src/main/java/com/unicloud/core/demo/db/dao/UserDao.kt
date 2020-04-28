@@ -20,6 +20,9 @@ interface UserDao {
     @Query("SELECT * FROM user_table")
     fun queryAllUser(): LiveData<List<UserEntity>>
 
+    @Query("SELECT * FROM user_table")
+    fun queryAllUsers(): List<UserEntity>
+
     @Query("DELETE FROM user_table")
     suspend fun deleteAll()
 
