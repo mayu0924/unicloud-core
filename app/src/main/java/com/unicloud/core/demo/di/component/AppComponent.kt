@@ -1,13 +1,12 @@
 package com.unicloud.core.demo.di.component
 
 import android.app.Application
-import android.content.Context
 import com.unicloud.core.demo.db.AppDataBase
-import com.unicloud.core.demo.di.module.AppModule
+import com.unicloud.core.demo.utils.sharedPreferences.AppData
 import com.unicloud.core.demo.utils.sharedPreferences.IAppData
 import dagger.BindsInstance
 import dagger.Component
-import org.jetbrains.annotations.NotNull
+import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
@@ -19,19 +18,20 @@ import javax.inject.Singleton
  *     version: 1.0
  * </pre>
  */
-@Singleton
-@Component(modules = [AppModule::class])
-interface AppComponent {
-    fun application(): Application
-
-    fun provideAppData(): IAppData
-
-    fun providerAppDatabase(): AppDataBase
-
-    @Component.Builder
-    interface Builder {
-        @BindsInstance
-        fun application(application: Application): Builder
-        fun build(): AppComponent
-    }
-}
+//@Singleton
+//@Component(modules = [AppModule::class])
+//interface AppComponent {
+//    fun application(): Application
+//
+//    fun appData(): AppData
+//
+//    fun appDatabase(): AppDataBase
+//
+//    @Component.Builder
+//    interface Builder {
+//        @BindsInstance
+//        fun application(application: Application): Builder
+//
+//        fun build(): AppComponent
+//    }
+//}

@@ -5,7 +5,6 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.unicloud.core.demo.db.dao.UserDao
-import javax.inject.Inject
 
 /**
  * unicloud-core
@@ -13,7 +12,7 @@ import javax.inject.Inject
  * created by mayu
  * on 2020/4/25
  */
-@Database(entities = arrayOf(UserEntity::class), version = 1, exportSchema = false)
+@Database(entities = [UserEntity::class], version = 1, exportSchema = false)
 abstract class AppDataBase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
@@ -32,7 +31,7 @@ abstract class AppDataBase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDataBase::class.java,
-                    "word_database"
+                    "database"
                 ).build()
                 INSTANCE = instance
                 return instance

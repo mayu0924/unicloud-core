@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -77,8 +78,14 @@ dependencies {
     api 'me.jessyan:retrofit-url-manager:1.4.0'
     api 'com.orhanobut:logger:2.2.0'
 
-
     api 'cn.hchstudio:kpermissions:1.0.9'
+
+    api 'com.google.dagger:dagger:2.27'
+    kapt 'com.google.dagger:dagger-compiler:2.27'
+
+    api "androidx.room:room-runtime:$rootProject.roomVersion"
+    api "androidx.room:room-ktx:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
 
 //    api 'com.mayu.core:ui:0.1.7'
     api project(path: ':libs:unicloud-core-view')

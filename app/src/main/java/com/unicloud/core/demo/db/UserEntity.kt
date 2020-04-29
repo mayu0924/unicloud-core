@@ -12,11 +12,11 @@ import androidx.room.PrimaryKey
  */
 @Entity(tableName = "user_table")
 class UserEntity(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "uid") val uid: Int,
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "sex") val sex: String
 ){
     override fun toString(): String {
-        return "UserEntity(id=$id, name='$name', sex='$sex')"
+        return "UserEntity(id=$uid, name='$name', sex='$sex')"
     }
 }

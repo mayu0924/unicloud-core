@@ -1,7 +1,6 @@
 package com.unicloud.core.demo.di.module
 
 import android.content.Context
-import androidx.room.Room
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.Utils
 import com.unicloud.core.demo.db.AppDataBase
@@ -20,20 +19,16 @@ import javax.inject.Singleton
  *     version: 1.0
  * </pre>
  */
-@Module
-class AppModule {
-
-    @Singleton
-    @Provides
-    fun provideAppData(): IAppData = AppData()
-
-    @Provides
-    @Singleton
-    fun providerAppDatabase(): AppDataBase {
-        return Room.databaseBuilder(
-            Utils.getApp(),
-            AppDataBase::class.java,
-            AppUtils.getAppName()
-        ).build()
-    }
-}
+//@Module
+//class AppModule {
+//
+//    @Provides
+//    @Singleton
+//    fun providerAppDatabase(): AppDataBase {
+//        return Room.databaseBuilder(
+//            Utils.getApp(),
+//            AppDataBase::class.java,
+//            AppUtils.getAppName()
+//        ).build()
+//    }
+//}

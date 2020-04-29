@@ -13,7 +13,6 @@ import com.unicloud.core.demo.app.MApplication
 import com.unicloud.core.demo.db.AppDataBase
 import com.unicloud.core.demo.db.UserEntity
 import com.unicloud.core.demo.db.repository.UserRepository
-import com.unicloud.core.demo.di.AppManager
 import com.unicloud.core.demo.model.bean.ArticleListBean
 import com.unicloud.core.demo.model.repository.MainRepository
 import com.unicloud.core.demo.net.RetrofitClient
@@ -29,15 +28,17 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
+import javax.inject.Inject
 
 
 class MainViewModel : BaseViewModel() {
     private val mainRespository by lazy { MainRepository() }
 
     //    private val userDao by lazy { AppDataBase.getDatabase(getApplication()).userDao() }
-    private val userDao by lazy { AppManager.dbManager().userDao() }
+    private val userDao by lazy { //AppManager.dbManager().userDao()
+         }
 
-    private val userRepository by lazy { UserRepository(userDao) }
+    private val userRepository by lazy { UserRepository() }
 
     var allUser: LiveData<List<UserEntity>> = MutableLiveData<List<UserEntity>>()
 
@@ -46,8 +47,8 @@ class MainViewModel : BaseViewModel() {
     val mArticleListBean: MutableLiveData<ArticleListBean> = MutableLiveData()
 
     fun insert() = viewModelScope.launch(Dispatchers.IO) {
-        userRepository.insert(UserEntity(0, "mayu", "male"))
-        userRepository.insert(UserEntity(0, "xufang", "famale"))
+//        userRepository.insert(UserEntity(0, "mayu", "male"))
+//        userRepository.insert(UserEntity(0, "xufang", "famale"))
     }
 
     fun queryAllUser() {
@@ -59,10 +60,10 @@ class MainViewModel : BaseViewModel() {
 //        }
     }
 
-    fun queryAllUsers() = userRepository.queryAll()
+//    fun queryAllUsers() = userRepository.queryAll()
 
     fun deleteAll() = viewModelScope.launch(Dispatchers.IO) {
-        userRepository.deleteAll()
+//        userRepository.deleteAll()
     }
 
     fun getHomeArticles() {

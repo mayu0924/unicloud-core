@@ -16,7 +16,6 @@ import com.blankj.utilcode.util.ToastUtils
 import com.orhanobut.logger.Logger
 import com.unicloud.core.demo.R
 import com.unicloud.core.demo.activity.vm.MainViewModel
-import com.unicloud.core.demo.di.AppManager
 import com.unicloud.core.mvvm.BaseActivity
 import com.unicloud.core.mvvm.event.Message
 import com.unicloud.core.mvvm.utils.StatusBarUtil
@@ -34,7 +33,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
     override fun startObserve() {
         viewModel.mArticleListBean.observe(this, Observer {
             uText.setText(it.datas[0].title)
-            AppManager.dataManager().saveArticle(it.datas[0])
+//            AppManager.dataManager().saveArticle(it.datas[0])
         })
 
         viewModel.allUser.observe(this, Observer {
@@ -116,7 +115,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
             viewModel.getHomeArticles()
         }
         requestRepeat.setOnClickListener {
-            uText.setText(AppManager.dataManager().getArticle()?.title ?: "什么都没有")
+//            uText.setText(AppManager.dataManager().getArticle()?.title ?: "什么都没有")
         }
         motionButton.setOnClickListener {
             startActivity(Intent(this, MotionActivity::class.java))
@@ -126,9 +125,9 @@ class MainActivity : BaseActivity<MainViewModel>() {
         }
         queryAll.setOnClickListener {
 //            viewModel.queryAllUser()
-            viewModel.queryAllUsers().observe(this, Observer {
-                LogUtils.d(it.toString())
-            })
+//            viewModel.queryAllUsers().observe(this, Observer {
+//                LogUtils.d(it.toString())
+//            })
         }
         deleteAll.setOnClickListener {
             viewModel.deleteAll()

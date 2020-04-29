@@ -3,6 +3,7 @@ package com.unicloud.core.demo.utils.sharedPreferences
 import androidx.core.content.edit
 import com.google.gson.reflect.TypeToken
 import com.unicloud.core.demo.model.bean.ArticleBean
+import javax.inject.Inject
 
 /**
  * @desc 数据存储
@@ -10,7 +11,7 @@ import com.unicloud.core.demo.model.bean.ArticleBean
  * @author yu.ma
  * @date 2020/4/24 12:05
  */
-class AppData : SharedPreferencesHelper(), IAppData {
+class AppData @Inject constructor() : SharedPreferencesHelper(), IAppData {
     override fun saveArticle(article: ArticleBean) {
         sp.edit { putObject<ArticleBean>("article", article) }
     }
