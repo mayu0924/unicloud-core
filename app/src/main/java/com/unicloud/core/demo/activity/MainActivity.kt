@@ -1,17 +1,12 @@
 package com.unicloud.core.demo.activity
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.Gravity
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
-import androidx.core.text.backgroundColor
-import androidx.core.text.bold
 import androidx.lifecycle.Observer
-import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.orhanobut.logger.Logger
 import com.unicloud.core.demo.R
@@ -32,8 +27,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
     override fun startObserve() {
         viewModel.mArticleListBean.observe(this, Observer {
-            uText.setText(it.datas[0].title)
-//            AppManager.dataManager().saveArticle(it.datas[0])
+//            uText.setText(it.datas[0].title)
         })
 
         viewModel.allUser.observe(this, Observer {
@@ -58,10 +52,9 @@ class MainActivity : BaseActivity<MainViewModel>() {
                 }
             }
         toolBar.updateTitleCenter()
-        uText2.text =
-            SpannableStringBuilder().append("123").backgroundColor(Color.parseColor("#ff6666"), {})
-                .bold { "2333" }.toString()
-//        uText.filters = arrayOf(InputTextFilter(this, {}))
+        btn_anim.setOnClickListener {
+            startActivity(Intent(this, NavigationActivity::class.java))
+        }
     }
 
     fun setTitleCenter(toolbar: Toolbar) {
@@ -90,48 +83,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
 
     override fun initData() {
-//        viewModel.getHomeArticles()
-//        viewModel.download()
-//        chapterTitle.setOnClickListener {
-//            viewModel.upload()
-//        }
 
-//        uniBtn.setOnClickListener {
-//            startActivity(Intent(this, UNIButtonActivity::class.java))
-//        }
-//        uniText.setOnClickListener {
-//            startActivity(Intent(this, UNITextActivity::class.java))
-//        }
-//        uniDrawableText.setOnClickListener {
-//            startActivity(Intent(this, UNIDrawableTextActivity::class.java))
-//        }
-//        uniImageView.setOnClickListener {
-//            startActivity(Intent(this, UNIImageActivity::class.java))
-//        }
-        rButton.setOnClickListener {
-            startActivity(Intent(this, RWidgetActivity::class.java))
-        }
-        request.setOnClickListener {
-            viewModel.getHomeArticles()
-        }
-        requestRepeat.setOnClickListener {
-//            uText.setText(AppManager.dataManager().getArticle()?.title ?: "什么都没有")
-        }
-        motionButton.setOnClickListener {
-            startActivity(Intent(this, MotionActivity::class.java))
-        }
-        insert.setOnClickListener {
-            viewModel.insert()
-        }
-        queryAll.setOnClickListener {
-//            viewModel.queryAllUser()
-//            viewModel.queryAllUsers().observe(this, Observer {
-//                LogUtils.d(it.toString())
-//            })
-        }
-        deleteAll.setOnClickListener {
-            viewModel.deleteAll()
-        }
     }
 
     override fun handleEvent(msg: Message) {

@@ -64,11 +64,10 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), CustomAda
     }
 
     // =====================================================
-    abstract fun startObserve()
-
     abstract fun layoutId(): Int
     abstract fun initView(savedInstanceState: Bundle?)
     abstract fun initData()
+    abstract fun startObserve()
     // =====================================================
 
     override fun onCreate(savedInstanceState: Bundle?) {

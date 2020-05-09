@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.github.core.view.widget.XLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.github.core.view.widget.XConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,152 +15,28 @@
         app:subtitle=""
         app:title="标题" />
 
-    <com.github.core.view.widget.XTextView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLine"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_gravity="center_horizontal"
-        android:text="标题"
-        android:textColor="@color/red"
-        android:textSize="18sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        app:layout_constraintGuide_percent="0.5" />
 
-        <com.github.core.view.widget.XButton
-            android:id="@+id/rButton"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="RWidget"
-            android:textColor="#fff"
-            android:textSize="18dp"
-            app:background_normal="@array/array_l_r"
-            app:corner_radius="10dp"
-            app:gradient_orientation="LEFT_RIGHT"
-            app:gradient_type="linear"
-            app:ripple="true" />
+    <com.github.core.view.widget.XButton
+        android:id="@+id/btn_anim"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:text="AnimLayout"
+        app:layout_constraintEnd_toEndOf="@id/guideLine"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar" />
 
-        <com.github.core.view.widget.XButton
-            android:id="@+id/request"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="request"
-            android:textColor="#fff"
-            android:textSize="18dp"
-            app:background_normal="@array/array_l_r"
-            app:corner_radius="10dp"
-            app:gradient_orientation="LEFT_RIGHT"
-            app:gradient_type="linear"
-            app:ripple="true" />
 
-        <com.github.core.view.widget.XButton
-            android:id="@+id/requestRepeat"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="requestRepeat"
-            android:textColor="#fff"
-            android:textSize="18dp"
-            app:background_normal="@array/array_l_r"
-            app:corner_radius="10dp"
-            app:gradient_orientation="LEFT_RIGHT"
-            app:gradient_type="linear"
-            app:ripple="true" />
-
-        <com.github.core.view.widget.XButton
-            android:id="@+id/motionButton"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="motionButton"
-            android:textColor="#fff"
-            android:textSize="18dp"
-            app:background_normal="@array/array_l_r"
-            app:corner_radius="10dp"
-            app:gradient_orientation="LEFT_RIGHT"
-            app:gradient_type="linear"
-            app:ripple="true" />
-
-        <com.github.core.view.widget.XEditText
-            android:id="@+id/uText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"
-            android:layout_marginTop="10dp"
-            app:background_normal="#fefefe"
-            app:corner_radius="4dp"
-            app:border_color_normal="@color/orange"
-            app:border_width_normal="1px"
-            android:text="@string/app_name"
-            android:gravity="center"
-            android:textColor="@color/red"/>
-
-        <com.github.core.view.widget.XTextView
-            android:id="@+id/uText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"
-            android:layout_marginTop="10dp"
-            app:background_normal="#fefefe"
-            app:corner_radius="4dp"
-            app:border_color_normal="@color/orange"
-            app:border_width_normal="1px"
-            android:text="@string/app_name"
-            android:gravity="center"
-            android:textColor="@color/red"/>
-
-        <com.github.core.view.widget.XButton
-            android:id="@+id/insert"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="insert"
-            android:textColor="#fff"
-            android:textSize="18dp"
-            app:background_normal="@array/array_l_r"
-            app:corner_radius="10dp"
-            app:gradient_orientation="LEFT_RIGHT"
-            app:gradient_type="linear"
-            app:ripple="true" />
-
-        <com.github.core.view.widget.XButton
-            android:id="@+id/queryAll"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="queryAll"
-            android:textColor="#fff"
-            android:textSize="18dp"
-            app:background_normal="@array/array_l_r"
-            app:corner_radius="10dp"
-            app:gradient_orientation="LEFT_RIGHT"
-            app:gradient_type="linear"
-            app:ripple="true" />
-
-        <com.github.core.view.widget.XButton
-            android:id="@+id/deleteAll"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="deleteAll"
-            android:textColor="#fff"
-            android:textSize="18dp"
-            app:background_normal="@array/array_l_r"
-            app:corner_radius="10dp"
-            app:gradient_orientation="LEFT_RIGHT"
-            app:gradient_type="linear"
-            app:ripple="true" />
-    </LinearLayout>
-</com.github.core.view.widget.XLinearLayout>
+</com.github.core.view.widget.XConstraintLayout>
 

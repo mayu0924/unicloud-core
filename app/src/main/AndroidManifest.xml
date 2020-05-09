@@ -29,6 +29,7 @@
 
         <activity android:name=".activity.RWidgetActivity" />
         <activity android:name=".activity.MotionActivity" />
+        <activity android:name=".activity.NavigationActivity" />
     </application>
 
 </manifest>

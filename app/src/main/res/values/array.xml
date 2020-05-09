@@ -3,8 +3,8 @@
 
     <!--左到右-->
     <array name="toolbar">
-        <item>@android:color/background_dark</item>
-        <item>@android:color/background_dark</item>
+        <item>@color/colorPrimary</item>
+        <item>@color/colorPrimary</item>
     </array>
 
     <!--彩虹颜色值-->

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.core.view.widget.XConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
+
+    <com.github.core.view.widget.XToolbar
+        android:id="@+id/toolBar"
+        style="@style/ToolBar.Back"
+        app:centerTitle="true"
+        app:subtitle=""
+        app:title="标题"/>
+
+    <com.unicloud.core.demo.view.AnimLayout
+        android:id="@+id/anim_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintTop_toBottomOf="@id/toolBar"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</com.github.core.view.widget.XConstraintLayout>
+
