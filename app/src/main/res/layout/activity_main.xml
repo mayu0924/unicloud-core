@@ -37,6 +37,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolBar" />
 
+    <com.github.core.view.widget.XButton
+        android:id="@+id/btn_meeting"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:text="meeting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="@id/guideLine"
+        app:layout_constraintTop_toBottomOf="@id/toolBar" />
 
 </com.github.core.view.widget.XConstraintLayout>
 

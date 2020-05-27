@@ -59,6 +59,10 @@
     </style>
 
     <style name="ToolBar.Back">
+        <item name="navigationIcon">@mipmap/common_backbtn_normal</item>
+    </style>
+
+    <style name="ToolBar.Back.White">
         <item name="navigationIcon">@mipmap/ic_back_white</item>
     </style>
 
@@ -66,7 +70,7 @@
         <!-- 标题边距和样式-->
         <item name="titleMarginStart">10dp</item>
         <item name="android:paddingStart">10dp</item>
-        <item name="logo">@mipmap/logo2</item>
+<!--        <item name="logo">@mipmap/logo2</item>-->
     </style>
 
 </resources>

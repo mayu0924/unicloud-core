@@ -16,6 +16,8 @@
             <option value="$PROJECT_DIR$/libs" />
             <option value="$PROJECT_DIR$/libs/unicloud-core-mvvm" />
             <option value="$PROJECT_DIR$/libs/unicloud-core-view" />
+            <option value="$PROJECT_DIR$/meeting" />
+            <option value="$PROJECT_DIR$/meeting/meeting-ui" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

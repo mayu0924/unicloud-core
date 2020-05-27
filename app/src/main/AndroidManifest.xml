@@ -19,7 +19,7 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
 
-        <activity android:name="com.unicloud.core.demo.activity.MainActivity">
+        <activity android:name="com.unicloud.core.demo.activity.WebSelActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,17 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.unicloud.core.demo.activity.MainActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
         <activity android:name=".activity.RWidgetActivity" />
+        <activity android:name=".activity.WebActivity" />
+        <activity android:name=".activity.X5WebActivity" />
         <activity android:name=".activity.MotionActivity" />
         <activity android:name=".activity.NavigationActivity" />
     </application>

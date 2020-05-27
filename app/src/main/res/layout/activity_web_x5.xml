@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.core.view.widget.XConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
+
+    <com.github.core.view.widget.XToolbar
+        android:id="@+id/toolBar"
+        style="@style/ToolBar.Back"
+        app:centerTitle="true"
+        app:subtitle=""
+        app:title=" "
+        app:titleTextColor="#222222" />
+
+    <com.tencent.smtt.sdk.WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar"
+        app:layout_constraintVertical_weight="1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="X5WebView"
+        android:textColor="#dddddd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</com.github.core.view.widget.XConstraintLayout>
+

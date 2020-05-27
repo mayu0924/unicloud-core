@@ -1,12 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
-
 
     defaultConfig {
         minSdkVersion 19
@@ -24,15 +22,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
-    }
-    compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
-    }
-    kotlinOptions { jvmTarget = 1.8}
+
 }
 
 dependencies {
@@ -40,25 +30,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta6'
-
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-//    implementation 'com.ruffian.library:RWidgetHelper-AndroidX:0.0.2'
+    implementation project(path: ':libs:unicloud-core-mvvm')
 }
-
-
-// 新增
-//publish {
-//    repoName = 'unicloud'
-//    userOrg = 'msy649166'        //bint
-//    // ray.com用户名
-//    groupId = 'com.mayu.core'    //jcenter上的路径
-//    artifactId = 'ui'   //项目名称
-//    publishVersion = '0.1.7'//版本号
-//    desc = 'ui'//描述，自由填写
-//    website = 'https://github.com/mayu0924/unicloud-core' // 网址，自由填写
-//}
-//gradlew clean build bintrayUpload -PbintrayUser=msy649166 -PbintrayKey=5dc41b1720e3bf6cd80871a56473ba20350c04f6 -PdryRun=false

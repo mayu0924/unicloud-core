@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import com.blankj.utilcode.util.ToastUtils
+import com.gnet.meeting.ui.activity.MeetingActivity
 import com.orhanobut.logger.Logger
 import com.unicloud.core.demo.R
 import com.unicloud.core.demo.activity.vm.MainViewModel
@@ -54,6 +55,9 @@ class MainActivity : BaseActivity<MainViewModel>() {
         toolBar.updateTitleCenter()
         btn_anim.setOnClickListener {
             startActivity(Intent(this, NavigationActivity::class.java))
+        }
+        btn_meeting.setOnClickListener {
+            startActivity(Intent(this, MeetingActivity::class.java))
         }
     }
 
