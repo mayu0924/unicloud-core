@@ -13,7 +13,8 @@
         app:centerTitle="true"
         app:subtitle=""
         app:title=" "
-        app:titleTextColor="#222222" />
+        app:titleTextColor="#222222"
+        android:visibility="gone"/>
 
     <WebView
         android:id="@+id/webview"

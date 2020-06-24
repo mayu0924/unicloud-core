@@ -24,10 +24,14 @@ class WebSelActivity : BaseActivity<NoViewModel>() {
     override fun initView(savedInstanceState: Bundle?) {
         StatusBarUtil.setDarkMode(this)
         webview.setOnClickListener {
-            startActivity(Intent(this, WebActivity::class.java))
+            startActivity(Intent(this, WebActivity::class.java).apply {
+                putExtra("url", etUrl.text.toString())
+            })
         }
         x5webView.setOnClickListener {
-            startActivity(Intent(this, X5WebActivity::class.java))
+            startActivity(Intent(this, X5WebActivity::class.java).apply {
+                putExtra("url", etUrl.text.toString())
+            })
         }
     }
 
