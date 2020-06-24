@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 /.idea/terminal.xml
+/node_modules
+package-lock.json

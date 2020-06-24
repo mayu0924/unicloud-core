@@ -1,0 +1,30 @@
+{
+  "name": "unicloud-core",
+  "version": "1.0.0",
+  "description": "unicloud-core",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.2.0"
+  },
+  "scripts": {
+     "dev": "webpack-dev-server --host 0.0.0.0 --inline --progress",
+     "commit": "git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mayu0924/unicloud-core.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mayu0924/unicloud-core/issues"
+  },
+  "homepage": "https://github.com/mayu0924/unicloud-core#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
