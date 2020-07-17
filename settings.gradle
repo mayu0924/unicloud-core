@@ -1,3 +1,2 @@
-include ':libs:unicloud-core-mvvm', ':libs:unicloud-core-view'
+include ':libs:lib-core-mvvm', ':libs:lib-core-view'
 include ':app'
-include ':meeting:meeting-ui'
