@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Toolbar.TechStar" parent="ThemeOverlay.AppCompat.Dark">
+        <!--修改菜单栏右边三个白点图标-->
+        <item name="android:actionOverflowButtonStyle">@style/TechStarOverflowButtonStyle</item>
+        <!--ToolBar右边弹出菜单背景色 不遮拦Toolbar-->
+        <item name="actionOverflowMenuStyle">@style/techstar.MenuStyle</item>
+        <!--Menu item 高度 这里不需要指定style 可直接指定-->
+        <item name="android:listPreferredItemHeightSmall">45dp</item>
+        <!-- 分隔线 -->
+        <item name="android:dropDownListViewStyle">@style/PopupMenuListView</item>
+        <!-- Menu item 文字样式相关 比较迷的一个点  我自己的项目是留下Large两个item其1就可以实现  可能和分辨率或者和建造menu时的选项相关？？？-->
+        <item name="textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall</item>
+        <item name="textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall</item>
+    </style>
+
+    <!--修改菜单栏右边三个白点图标-->
+    <style name="TechStarOverflowButtonStyle"
+        parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+        <item name="android:src">@android:drawable/ic_menu_add</item>
+    </style>
+
+    <!--ToolBar右边弹出菜单背景色  overlapAncho属性选false可不遮拦Toolbar-->
+    <style name="techstar.MenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>
+        <item name="android:popupBackground">#00FF00</item>
+    </style>
+
+    <!-- 分隔线 -->
+    <style name="PopupMenuListView" parent="@android:style/Widget.Holo.ListView.DropDown">
+        <item name="android:divider">#FF0000</item>
+        <item name="android:dividerHeight">2dp</item>
+    </style>
+
+    <!-- Menu item 文字样式  对应item的large或者small 选择parent 否则无效-->
+    <style name="myPopupMenuTextAppearanceSmall"
+        parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small">
+        <item name="android:textColor">#FF0000</item>
+    </style>
+
+    <!-- Menu item 文字样式  对应item的large或者small 选择parent 否则无效-->
+    <style name="myPopupMenuTextAppearanceLarge"
+        parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large">
+        <item name="android:textColor">#FF0000</item>
+    </style>
+</resources>
