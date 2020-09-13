@@ -7,10 +7,10 @@ import com.github.core.view.widget.helper.BaseHelper
 import com.github.core.view.widget.iface.Helper
 
 class XFrameLayout @JvmOverloads constructor(
-    context: Context?,
+    context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : FrameLayout(context!!, attrs, defStyleAttr),
+) : FrameLayout(context, attrs, defStyleAttr),
     Helper<BaseHelper<*>?> {
     private val mHelper: BaseHelper<XFrameLayout> =
         BaseHelper(context, this, attrs)

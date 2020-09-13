@@ -6,13 +6,20 @@ import android.util.Log
 import android.view.Gravity
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import androidx.datastore.preferences.preferencesKey
 import androidx.lifecycle.Observer
+import androidx.lifecycle.viewModelScope
+import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.gnet.meeting.ui.activity.MeetingActivity
 import com.orhanobut.logger.Logger
 import com.unicloud.core.demo.R
 import com.unicloud.core.demo.activity.vm.MainViewModel
+import com.unicloud.core.demo.model.bean.ArticleListBean
+import com.unicloud.core.demo.model.bean.User
 import com.unicloud.core.mvvm.BaseActivity
+import com.unicloud.core.mvvm.data.DataStoreHelper
+import com.unicloud.core.mvvm.data.SharedPreferencesHelper
 import com.unicloud.core.mvvm.event.Message
 import com.unicloud.core.mvvm.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_main.*
@@ -59,6 +66,33 @@ class MainActivity : BaseActivity<MainViewModel>() {
         btn_meeting.setOnClickListener {
             startActivity(Intent(this, MeetingActivity::class.java))
         }
+
+        SharedPreferencesHelper.sp.edit().putString("name", "jack").apply()
+
+        LogUtils.d(SharedPreferencesHelper.sp.getString("name", "no data"))
+
+        DataStoreHelper.getValue<String>(
+            scope = viewModel.viewModelScope,
+            key = preferencesKey("name"),
+            defaultValue = "no data",
+            callback = {
+                LogUtils.d(it)
+            })
+
+        DataStoreHelper.save<User>(
+            scope = viewModel.viewModelScope,
+            key = preferencesKey<User>("user"),
+            value = User("jack", 12),
+            {}
+        )
+
+        DataStoreHelper.getValue<User>(
+            scope = viewModel.viewModelScope,
+            key = preferencesKey("article"),
+            defaultValue = User("jack123", 14),
+            callback = {
+                LogUtils.d(it)
+            })
     }
 
     fun setTitleCenter(toolbar: Toolbar) {

@@ -8,7 +8,7 @@ import com.github.core.view.widget.helper.CheckHelper
 import com.github.core.view.widget.iface.Helper
 
 class XRadioButton @JvmOverloads constructor(
-    context: Context?,
+    context: Context,
     attrs: AttributeSet? = null
 ) : AppCompatRadioButton(context, attrs),
     Helper<CheckHelper?> {

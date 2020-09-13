@@ -1,4 +1,4 @@
-package com.unicloud.core.demo.utils.sharedPreferences
+package com.unicloud.core.mvvm.data
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -14,16 +14,16 @@ import java.lang.reflect.Type
  * @author yu.ma
  * @date 2020/4/24 11:54
  */
-abstract class SharedPreferencesHelper {
-    protected var sp: SharedPreferences =
-        Utils.getApp().getSharedPreferences(AppUtils.getAppName(), Context.MODE_PRIVATE)
+object SharedPreferencesHelper {
+    var sp: SharedPreferences =
+        Utils.getApp().getSharedPreferences(AppUtils.getAppPackageName(), Context.MODE_PRIVATE)
 
-    fun <T> SharedPreferences.Editor.putObject(key: String, value: Any?) {
+    fun <T> SharedPreferences.Editor.putObject(key: String, value: T?) {
         if (value == null) {
             remove(key)
             return
         }
-        val json = GsonUtils.toJson(value, object : TypeToken<T>(){}.type)
+        val json = GsonUtils.toJson(value, object : TypeToken<T>() {}.type)
         putString(key, json)
     }
 

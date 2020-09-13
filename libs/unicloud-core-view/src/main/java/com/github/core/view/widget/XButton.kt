@@ -8,7 +8,7 @@ import com.github.core.view.widget.helper.TextViewHelper
 import com.github.core.view.widget.iface.Helper
 
 class XButton @JvmOverloads constructor(
-    context: Context?,
+    context: Context,
     attrs: AttributeSet? = null
 ) :
     AppCompatButton(context, attrs),

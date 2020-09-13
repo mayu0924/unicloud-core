@@ -8,7 +8,7 @@ import com.github.core.view.widget.helper.CheckHelper
 import com.github.core.view.widget.iface.Helper
 
 class XCheckBox @JvmOverloads constructor(
-    context: Context?,
+    context: Context,
     attrs: AttributeSet? = null
 ) : AppCompatCheckBox(context, attrs),
     Helper<CheckHelper?> {

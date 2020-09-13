@@ -7,7 +7,7 @@ import com.github.core.view.widget.helper.BaseHelper
 import com.github.core.view.widget.iface.Helper
 
 class XConstraintLayout @JvmOverloads constructor(
-    context: Context?,
+    context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr),

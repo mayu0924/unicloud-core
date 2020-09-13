@@ -8,7 +8,7 @@ import com.github.core.view.widget.helper.TextViewHelper
 import com.github.core.view.widget.iface.Helper
 
 class XTextView @JvmOverloads constructor(
-    context: Context?,
+    context: Context,
     attrs: AttributeSet? = null
 ) :
     AppCompatTextView(context, attrs),

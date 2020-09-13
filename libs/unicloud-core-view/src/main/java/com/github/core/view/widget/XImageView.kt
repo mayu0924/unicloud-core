@@ -13,7 +13,7 @@ import com.unicloud.core.view.R
 import com.github.core.view.widget.round.RoundDrawable
 
 class XImageView @JvmOverloads constructor(
-    context: Context?,
+    context: Context,
     attrs: AttributeSet? = null
 ) : AppCompatImageView(context, attrs) {
     /************************

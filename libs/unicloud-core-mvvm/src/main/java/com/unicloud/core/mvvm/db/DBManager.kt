@@ -1,10 +1,6 @@
 package com.unicloud.core.mvvm.db
 
 import android.content.Context
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * <pre>
@@ -15,8 +11,7 @@ import javax.inject.Singleton
  *     version: 1.0
  * </pre>
  */
-@Singleton
-class DBManager @Inject constructor() : IDBManager {
+class DBManager : IDBManager {
 
     override fun init(context: Context, dbName: String) {
 
