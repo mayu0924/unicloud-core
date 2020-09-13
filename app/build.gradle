@@ -78,8 +78,8 @@ dependencies {
 
 //    implementation 'me.jessyan:autosize:1.1.2'
 
-    implementation project(path: ':libs:unicloud-core-mvvm')
-    implementation project(path: ':meeting:meeting-ui')
+//    implementation project(path: ':libs:lib-core-mvvm')
+    implementation 'com.lib.core:mvvm:1.0.1'
 //    implementation project(path: ':unicloud-core-view')
 
 //    releaseImplementation 'com.mayu.core:mvvm:0.3.0'

@@ -1,8 +1,0 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.gnet.meeting.ui">
-
-    <application>
-        <activity android:name=".activity.MeetingActivity" />
-    </application>
-
-</manifest>

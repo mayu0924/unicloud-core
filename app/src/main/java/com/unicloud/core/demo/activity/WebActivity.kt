@@ -82,7 +82,8 @@ class WebActivity : BaseActivity<NoViewModel>() {
     }
 
     override fun initData() {
-        webview.loadUrl("http://workspace.quanshi.com/mobile/html/#/space")
+        val url = intent.getStringExtra("url")?:"http://www.baidu.com"
+        webview.loadUrl(url)
         CookieSyncManager.createInstance(this)
         CookieSyncManager.getInstance().sync()
     }

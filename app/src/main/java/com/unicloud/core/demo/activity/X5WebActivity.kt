@@ -11,7 +11,10 @@ import com.unicloud.core.demo.R
 import com.unicloud.core.mvvm.BaseActivity
 import com.unicloud.core.mvvm.NoViewModel
 import com.unicloud.core.mvvm.utils.StatusBarUtil
+import kotlinx.android.synthetic.main.activity_web.*
 import kotlinx.android.synthetic.main.activity_web_x5.*
+import kotlinx.android.synthetic.main.activity_web_x5.toolBar
+import kotlinx.android.synthetic.main.activity_web_x5.webview
 
 
 class X5WebActivity : BaseActivity<NoViewModel>() {
@@ -87,7 +90,8 @@ class X5WebActivity : BaseActivity<NoViewModel>() {
     }
 
     override fun initData() {
-        webview.loadUrl("http://workspace.quanshi.com/mobile/html/#/space")
+        val url = intent.getStringExtra("url")?:"http://www.baidu.com"
+        webview.loadUrl(url)
         CookieSyncManager.createInstance(this)
         CookieSyncManager.getInstance().sync()
     }

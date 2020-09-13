@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>分享</title>
+        <meta http-equiv="Expires" content="0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-control" content="no-cache">
+        <meta http-equiv="Cache" content="no-cache">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+        <!-- <link rel="stylesheet"  type="text/css" href="./css/reset.css"> -->
+        <!-- <link rel="stylesheet"  type="text/css" href="./css/share.css"> -->
+    </head>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:0;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
+        img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        body {
+            width:100vw;
+            height: 100vh;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            letter-spacing: 0.133vw;
+            background-color: #f2f2f2;
+            margin: 0 auto;
+        }
+        .header {
+            background: #fff;
+            height: 11.733vw;
+            padding: 2.533vw 4.667vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            font-size: 4.267vw;
+        }
+
+        .header__arrow {
+            width: 2vw;
+            height: 2vw;
+            border-radius: 0.267vw;
+            transform: rotate(-135deg);
+            position: absolute;
+            left: 4.667vw;
+        }
+
+        .header__arrow:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            border-width: 0.267vw 0.267vw 0 0;
+            border-style: solid;
+            border-color: #000;
+            transition: .2s ease;
+            transform-origin: 100% 0;
+            display: block;
+        }
+
+        .header__arrow:after {
+            content: '';
+            float: left;
+            position: relative;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+            border-width: 0 0.267vw 0 0;
+            border-style: solid;
+            border-color: #000;
+            transform-origin: 100% 0;
+            transition:.2s ease;
+        }
+
+        .header__arrow:hover::after {
+            transform: rotate(45deg);
+            border-color:rgb(79 139 255);
+            height: 120%;
+        }
+
+        .header__arrow:hover:before {
+            border-color: rgb(79 139 255);
+            transform: scale(.8);
+        }
+
+        .share {
+            margin: 6.4vw 4.267vw 0;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            flex-flow: column nowrap;
+            text-align: center;
+            padding: 0 5.333vw;
+        }
+
+        .share__textArea{
+            text-align: center;
+            position: relative;
+        }
+
+        .share__textArea-input {
+            width: 100%;
+            border-radius: 0.667vw;
+            border: 1px solid rgba(0,0, 0, 0.2);
+            outline: none;
+            resize: none;
+            padding: 3.2vw;
+            padding-right: 2.4vw;
+            font-size: 4.267vw;
+            line-height: 1;
+            box-shadow: none;
+            -webkit-appearance: none;
+        }
+
+
+        .share__textArea-number {
+            position: absolute;
+            right: 3.8vw;
+            bottom: 2vw;
+            color: rgba(0,0, 0, 0.2);
+        }
+
+        .share__avatar {
+            display: flex;
+            justify-content: center;
+            flex-flow: column nowrap;
+            align-items: center;
+            padding-top: 10.133vw;
+            padding-bottom: 5.333vw;
+        }
+
+        .avatar__img {
+            width: 14.933vw;
+            height: 14.933vw;
+            /* background: green; */
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .avatar__name {
+            font-size: 3.733vw;
+            margin-top: 3.133vw;
+        }
+
+        .share__btn {
+            background: rgb(79 139 255);
+            margin-top: 8.8vw;
+            margin-bottom: 11.733vw;
+            color: #fff;
+            height: 10.667vw;
+            outline: none;
+            border-radius: 0.667vw;
+            border: none;
+            font-size: 4.267vw;
+        }
+
+        
+    </style>
+    <body>
+        <section>
+            <header class="header">
+                <span class="header__arrow" ontouchstart=""></span>
+                <p>干货分分享，让时间更有价值</p> 
+            </header>
+            <main class="share">
+                <aside class="share__avatar">
+                    <div class="avatar__img">
+                        <img src="./billie.jpg" width="112" height="112">
+                    </div>
+                    <div class="avatar__name">一个人</div>
+                </aside>
+                <div class="share__textArea">
+                    <textarea class="share__textArea-input" name="" id="" cols="30" maxlength="100" rows="15" placeholder="写下使用全时会议带给你的好处，并分享给你的好友"></textarea>
+                    <span class="share__textArea-number">0/100</span>
+                </div>
+                <button class="share__btn">生成海报并分享</button>
+            </main>
+        </section>
+    </body>
+
+    <script>
+        var textareaEl = document.querySelector(".share__textArea-input")
+        var countEl = document.querySelector(".share__textArea-number")
+
+        textareaEl.addEventListener("input", function(e) {
+            var count = e.target.value.length;
+            countEl.innerHTML = count + "/100";
+        })
+    </script>
+</html>
