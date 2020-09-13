@@ -91,7 +91,7 @@ dependencies {
     api 'androidx.datastore:datastore-core:1.0.0-alpha01'
 
 //    api 'com.mayu.core:ui:0.1.7'
-    api project(path: ':libs:unicloud-core-view')
+    api project(path: ':libs:lib-core-view')
 }
 
 // 新增
